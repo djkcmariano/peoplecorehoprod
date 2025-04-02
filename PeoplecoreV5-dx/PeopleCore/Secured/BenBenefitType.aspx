@@ -46,7 +46,12 @@
                                 <%--<dx:GridViewDataCheckColumn FieldName="IsWithDepe" Caption="With Dependent" />--%>
                                 <dx:GridViewDataCheckColumn FieldName="IsEnrollOnline" Caption="Enroll Online" />
                                 <dx:GridViewDataCheckColumn FieldName="IsViewOnline" Caption="View Online" />
-                                <dx:GridViewDataCheckColumn FieldName="IsMaintainBalance" Caption="With Maintaining Balance" />                                                       
+                                <dx:GridViewDataCheckColumn FieldName="IsMaintainBalance" Caption="With Maintaining Balance" />   
+                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                <dx:GridViewDataComboBoxColumn FieldName="PaylocDesc" Caption="Company" />                                                        
                                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" />
                             </Columns>                            
                         </dx:ASPxGridView>

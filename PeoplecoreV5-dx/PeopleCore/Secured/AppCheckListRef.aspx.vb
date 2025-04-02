@@ -3,7 +3,6 @@ Imports clsLib
 Imports DevExpress.Web
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
-
 Partial Class Secured_AppCheckListRef
     Inherits System.Web.UI.Page
 
@@ -13,6 +12,18 @@ Partial Class Secured_AppCheckListRef
 
     Private Sub PopulateGrid()
         Dim _dt As DataTable
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         _dt = SQLHelper.ExecuteDataTable("EApplicantStandardCheckList_Web", UserNo, 1, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
         Me.grdMain.DataSource = _dt
         Me.grdMain.DataBind()
@@ -149,7 +160,31 @@ Partial Class Secured_AppCheckListRef
         End If
 
     End Sub
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
 
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "ApplicantStandardCheckListNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, TableName, item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
+    End Sub
     Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
         If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowDelete) Then
             Dim fieldValues As List(Of Object) = grdMain.GetSelectedFieldValues(New String() {"ApplicantStandardCheckListNo"})
@@ -244,6 +279,7 @@ Partial Class Secured_AppCheckListRef
 #End Region
 
 End Class
+
 
 
 

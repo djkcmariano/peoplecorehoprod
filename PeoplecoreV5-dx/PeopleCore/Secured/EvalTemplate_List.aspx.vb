@@ -201,6 +201,32 @@ Partial Class Secured_EvalTemplate_List
 
     End Sub
 
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "EvalTemplateNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EEValTemplate", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
+    End Sub
+
     Protected Sub lnkDelete_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim DeleteCount As Integer = 0
 

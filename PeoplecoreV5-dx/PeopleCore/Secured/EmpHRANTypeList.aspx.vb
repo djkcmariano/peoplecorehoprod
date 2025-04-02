@@ -9,26 +9,39 @@ Partial Class Secured_EmpHRANTypeList
     Dim TransNo As Integer = 0
     Dim PayLocNo As Integer = 0
 
+    Protected Sub PopulateGrid()
+        Try
+            Dim dt As DataTable
+            dt = SQLHelper.ExecuteDataTable("EHRANType_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
+            grdMain.DataSource = dt
+            grdMain.DataBind()
+        Catch ex As Exception
 
-    Private Sub PopulateGrid(Optional IsMain As Boolean = False)
-        Dim _dt As DataTable
-        _dt = SQLHelper.ExecuteDataTable("EHRANType_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
-        Me.grdMain.DataSource = _dt
-        Me.grdMain.DataBind()
-
+        End Try
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         UserNo = Generic.ToInt(Session("OnlineUserNo"))
         TransNo = Generic.ToInt(Request.QueryString("id"))
         PayLocNo = Generic.ToInt(Session("xPayLocNo"))
-        PopulateGrid()
+
         If Not IsPostBack Then
-            PopulateDropDown()
+            Try
+                cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", Generic.ToInt(Session("OnlineUserNo")), 14)
+                cboTabNo.DataTextField = "tDesc"
+                cboTabNo.DataValueField = "tno"
+                cboTabNo.DataBind()
+            Catch ex As Exception
+            End Try
         End If
+        PopulateGrid()
         Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1)) : Response.Cache.SetCacheability(HttpCacheability.NoCache) : Response.Cache.SetNoStore()
     End Sub
 
+
+    Protected Sub lnkSearch_Click(sender As Object, e As EventArgs)
+        PopulateGrid()
+    End Sub
     Protected Sub lnkAdd_Click(sender As Object, e As EventArgs)
         If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowAdd) Then
             Response.Redirect("~/secured/EmpHRANTypeEdit.aspx?id=0")
@@ -52,26 +65,11 @@ Partial Class Secured_EmpHRANTypeList
         End If
     End Sub
 
-    Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
-        If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowDelete) Then
-            Dim fieldValues As List(Of Object) = grdMain.GetSelectedFieldValues(New String() {"HRANTypeNo"})
-            Dim str As String = "", i As Integer = 0
-            For Each item As Integer In fieldValues
-                Generic.DeleteRecordAudit("EHRANType", UserNo, item)
-                i = i + 1
-            Next
-            MessageBox.Success("(" + i.ToString + ") " + MessageTemplate.SuccessDelete, Me)
-            PopulateGrid()
-        Else
-            MessageBox.Warning(MessageTemplate.DeniedDelete, Me)
-        End If
-    End Sub
-
     Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
         Dim dt As DataTable, tProceed As Boolean = False
         Dim str As String = "", i As Integer = 0
         For j As Integer = 0 To grdMain.VisibleRowCount - 1
-
             If grdMain.Selection.IsRowSelected(j) Then
                 Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "HRANTypeNo"))
                 dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EHRANType", item, 1, PayLocNo)
@@ -93,20 +91,20 @@ Partial Class Secured_EmpHRANTypeList
 
     End Sub
 
-    Protected Sub lnkSearch_Click(sender As Object, e As EventArgs)
-        PopulateGrid(True)
+    Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
+        If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowDelete) Then
+            Dim fieldValues As List(Of Object) = grdMain.GetSelectedFieldValues(New String() {"HRANTypeNo"})
+            Dim str As String = "", i As Integer = 0
+            For Each item As Integer In fieldValues
+                Generic.DeleteRecordAudit("EHRANType", UserNo, item)
+                i = i + 1
+            Next
+            MessageBox.Success("(" + i.ToString + ") " + MessageTemplate.SuccessDelete, Me)
+            PopulateGrid()
+        Else
+            MessageBox.Warning(MessageTemplate.DeniedDelete, Me)
+        End If
     End Sub
-
-    Private Sub PopulateDropDown()
-        Try
-            cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", Generic.ToInt(Session("OnlineUserNo")), 14)
-            cboTabNo.DataTextField = "tDesc"
-            cboTabNo.DataValueField = "tno"
-            cboTabNo.DataBind()
-        Catch ex As Exception
-        End Try
-    End Sub
-
 #Region "********Detail Check All********"
 
 

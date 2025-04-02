@@ -7,10 +7,12 @@ Partial Class Secured_OrgPayClassList
     Dim UserNo As Integer = 0
     Dim TransNo As Integer = 0
     Dim PayLocNo As Integer = 0
+    Dim TableName As String
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         UserNo = Generic.ToInt(Session("OnlineUserNo"))
         PayLocNo = Generic.ToInt(Session("xPayLocNo"))
+        TableName = Generic.ToStr(Session("xTablename"))
         AccessRights.CheckUser(UserNo)
         If Not IsPostBack Then
             PopulateDropDown()
@@ -22,6 +24,13 @@ Partial Class Secured_OrgPayClassList
     Private Sub PopulateDropDown()
         Generic.PopulateDropDownList(UserNo, Me, "Panel1", PayLocNo)
         Generic.PopulateDropDownList(UserNo, Me, "Panel2", PayLocNo)
+        Try
+            cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", Generic.ToInt(Session("OnlineUserNo")), 14)
+            cboTabNo.DataTextField = "tDesc"
+            cboTabNo.DataValueField = "tno"
+            cboTabNo.DataBind()
+        Catch ex As Exception
+        End Try
 
         Try
             cboPayLocNo.DataSource = SQLHelper.ExecuteDataSet("EPayLoc_WebLookup_Reference", UserNo, PayLocNo)
@@ -43,7 +52,19 @@ Partial Class Secured_OrgPayClassList
 
     Private Sub PopulateGrid()
         Dim _dt As DataTable
-        _dt = SQLHelper.ExecuteDataTable("EPayClass_Web", UserNo, "", PayLocNo)
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
+        _dt = SQLHelper.ExecuteDataTable("EPayClass_Web", UserNo, "", Generic.ToInt(cboTabNo.SelectedValue), PayLocNo)
         Me.grdMain.DataSource = _dt
         Me.grdMain.DataBind()
     End Sub
@@ -68,6 +89,31 @@ Partial Class Secured_OrgPayClassList
         End If
     End Sub
 
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "PayClassNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, TableName, item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
+    End Sub
     Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
         If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowDelete) Then
             Dim fieldValues As List(Of Object) = grdMain.GetSelectedFieldValues(New String() {"PayClassNo"})
@@ -191,6 +237,7 @@ Partial Class Secured_OrgPayClassList
 
 
 End Class
+
 
 
 

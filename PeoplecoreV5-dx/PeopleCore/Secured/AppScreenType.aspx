@@ -18,10 +18,12 @@
                     <ContentTemplate>
                         <ul class="panel-controls">
                             <li><asp:LinkButton runat="server" ID="lnkExport" OnClick="lnkExport_Click" Text="Export" CssClass="control-primary" /></li>
-                            <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>                                                    
+                            <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>                             
+                            <li><asp:LinkButton runat="server" ID="lnkArchive" OnClick="lnkArchive_Click" Text="Archive" CssClass="control-primary" /></li>                                                    
                             <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible="false" /></li>
                         </ul>
                         <uc:ConfirmBox runat="server" ID="cfbDelete" TargetControlID="lnkDelete" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?"  />
+                        <uc:ConfirmBox runat="server" ID="cfbArchive" TargetControlID="lnkArchive" ConfirmMessage="Selected items will be archived. Proceed?"  />
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="lnkExport" />
@@ -42,7 +44,11 @@
                                 <dx:GridViewDataTextColumn FieldName="ApplicantScreenTypeCode" Caption="Code" />
                                 <dx:GridViewDataTextColumn FieldName="ApplicantScreenTypeDesc" Caption="Decription" />                                                                           
                                 <dx:GridViewDataTextColumn FieldName="ApplicantStatDesc" Caption="Status" />
-                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoder"/>                       
+                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />   
                                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" Width="2%">
 					                <HeaderTemplate>
                                         <dx:ASPxCheckBox ID="cbCheckAll" runat="server" OnInit="cbCheckAll_Init" >

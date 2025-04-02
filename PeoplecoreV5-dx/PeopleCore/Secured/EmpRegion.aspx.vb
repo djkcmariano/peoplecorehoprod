@@ -85,6 +85,32 @@ Partial Class Secured_EmpRegion
 
     End Sub
 
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "RegionNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "ERegion", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
+    End Sub
+
     Protected Sub lnkDelete_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim DeleteCount As Integer = 0
 
@@ -248,7 +274,7 @@ Partial Class Secured_EmpRegion
         Dim dt As New DataTable, error_num As Integer = 0, error_message As String = "", retVal As Boolean = False
         dt = SQLHelper.ExecuteDataTable("ERegion_WebSave", UserNo, Generic.ToInt(txtRegionNo.Text), RegionCode, RegionDesc, Generic.ToBol(chkIsArchived.Checked), Generic.ToInt(cboPayLocNo.SelectedValue))
         For Each row As DataRow In dt.Rows
-            RetVal = True
+            retVal = True
             error_num = Generic.ToInt(row("Error_num"))
             If error_num > 0 Then
                 error_message = Generic.ToStr(row("ErrorMessage"))
@@ -257,10 +283,10 @@ Partial Class Secured_EmpRegion
             End If
 
         Next
-        If RetVal = False And error_message = "" Then
+        If retVal = False And error_message = "" Then
             MessageBox.Critical(MessageTemplate.ErrorSave, Me)
         End If
-        If RetVal = True Then
+        If retVal = True Then
             PopulateGrid()
             MessageBox.Success(MessageTemplate.SuccessSave, Me)
         End If
@@ -286,19 +312,19 @@ Partial Class Secured_EmpRegion
         Dim dt As DataTable, error_num As Integer = 0, error_message As String = "", retVal As Boolean = False
         dt = SQLHelper.ExecuteDataTable("ERegionClass_WebSave", UserNo, RegionClassNo, ViewState("TransNo"), Code, fDescription, Amount)
         For Each row As DataRow In dt.Rows
-            RetVal = True
+            retVal = True
             error_num = Generic.ToInt(row("Error_num"))
             If error_num > 0 Then
                 error_message = Generic.ToStr(row("ErrorMessage"))
                 MessageBox.Critical(error_message, Me)
-                RetVal = False
+                retVal = False
             End If
 
         Next
-        If RetVal = False And error_message = "" Then
+        If retVal = False And error_message = "" Then
             MessageBox.Critical(MessageTemplate.ErrorSave, Me)
         End If
-        If RetVal = True Then
+        If retVal = True Then
             PopulateGrid()
             MessageBox.Success(MessageTemplate.SuccessSave, Me)
         End If
@@ -311,4 +337,3 @@ Partial Class Secured_EmpRegion
     End Sub
 
 End Class
-

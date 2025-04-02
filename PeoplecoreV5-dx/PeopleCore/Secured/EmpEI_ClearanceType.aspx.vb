@@ -17,7 +17,7 @@ Partial Class Secured_EmpEI_ClearanceType
 
     End Sub
 
-  
+
     Private Sub PopulateDropDown()
         Try
             cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", Generic.ToInt(Session("OnlineUserNo")), 14)
@@ -55,7 +55,34 @@ Partial Class Secured_EmpEI_ClearanceType
 
     End Sub
 
-    
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "EmployeeEIClearanceTypeNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EEmployeeEIClearanceType", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
+    End Sub
+
+
+
 
     Protected Sub lnkDelete_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim DeleteCount As Integer = 0
@@ -118,7 +145,7 @@ Partial Class Secured_EmpEI_ClearanceType
         End Try
     End Sub
 
-   
+
 
     Protected Sub lnkAdd_Click(sender As Object, e As EventArgs)
         If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowAdd) Then
@@ -140,7 +167,7 @@ Partial Class Secured_EmpEI_ClearanceType
         End If
     End Sub
 
-   
+
     'Submit record
     Protected Sub lnkSave_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim ds As New DataSet
@@ -152,7 +179,7 @@ Partial Class Secured_EmpEI_ClearanceType
 
 
     Private Sub SaveRecord()
-       
+
         Dim tno As Integer = Generic.ToInt(txtCode.Text)
         Dim tcode As String = Generic.ToStr(txtEmployeeEIClearanceTypeCode.Text)
         Dim tdesc As String = Generic.ToStr(txtEmployeeEIClearanceTypeDesc.Text)
@@ -162,9 +189,9 @@ Partial Class Secured_EmpEI_ClearanceType
         Dim isArchived As Boolean = Generic.ToBol(chkIsArchived.Checked)
 
         Dim dt As New DataTable, error_num As Integer = 0, error_message As String = "", retVal As Boolean = False
-        dt = SQLHelper.ExecuteDataTable("EEmployeeEIClearanceType_WebSave", UserNo, PayLocNo, tno, tcode, tdesc, cateno, isArchived, deptheadno, inchargeno)
+        dt = SQLHelper.ExecuteDataTable("EEmployeeEIClearanceType_WebSave", UserNo, tno, tcode, tdesc, cateno, isArchived, Generic.ToInt(cboPayLocNo.SelectedValue), deptheadno, inchargeno)
         For Each row As DataRow In dt.Rows
-            RetVal = True
+            retVal = True
             error_num = Generic.ToInt(row("Error_num"))
             If error_num > 0 Then
                 error_message = Generic.ToStr(row("ErrorMessage"))
@@ -173,16 +200,16 @@ Partial Class Secured_EmpEI_ClearanceType
             End If
 
         Next
-        If RetVal = False And error_message = "" Then
+        If retVal = False And error_message = "" Then
             MessageBox.Critical(MessageTemplate.ErrorSave, Me)
         End If
-        If RetVal = True Then
+        If retVal = True Then
             PopulateGrid()
             MessageBox.Success(MessageTemplate.SuccessSave, Me)
         End If
 
     End Sub
-  
+
 
     Protected Sub lnkSearch_Click(sender As Object, e As EventArgs)
         PopulateGrid(True)
@@ -196,4 +223,5 @@ Partial Class Secured_EmpEI_ClearanceType
     End Sub
 
 End Class
+
 

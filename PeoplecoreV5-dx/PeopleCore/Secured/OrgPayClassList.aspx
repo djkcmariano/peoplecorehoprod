@@ -9,12 +9,13 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="col-md-2">
-                    &nbsp;
+                        <asp:Dropdownlist ID="cboTabNo" AutoPostBack="true" OnSelectedIndexChanged="lnkSearch_Click" CssClass="form-control" runat="server" />
                 </div>
                 <div>                                  
                     <ul class="panel-controls">
                         <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>
-                        <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" /></li>                            
+                        <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible ="false"/></li> 
+                        <li><asp:LinkButton runat="server" ID="lnkArchive" OnClick="lnkArchive_Click" Text="Archive" CssClass="control-primary" /></li>                           
                     </ul>
 
                     <uc:ConfirmBox ID="ConfirmBox1" runat="server" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?" TargetControlID="lnkDelete" />
@@ -32,7 +33,12 @@
                                 </dx:GridViewDataColumn>                                
                                 <dx:GridViewDataTextColumn FieldName="Code" Caption="Reference No." />
                                 <dx:GridViewDataTextColumn FieldName="PayClassCode" Caption="Code" />                                                                           
-                                <dx:GridViewDataTextColumn FieldName="PayClassDesc" Caption="Description" />                                
+                                <dx:GridViewDataTextColumn FieldName="PayClassDesc" Caption="Description" />
+                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />                                 
                                 <dx:GridViewDataColumn CellStyle-HorizontalAlign="Center" Caption="Details" HeaderStyle-HorizontalAlign="Center" Visible="false">
                                     <DataItemTemplate>
                                         <asp:LinkButton runat="server" ID="lnkDetails" CssClass="fa fa-list" Font-Size="Medium" />
