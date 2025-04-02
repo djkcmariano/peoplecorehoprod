@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.08113in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.95613in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.2in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ExpeTypeDesc">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ExpeTypeDesc.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ExpeTypeDesc</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>2</ColSpan>
+                    <rd:Selected>true</rd:Selected>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember />
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>ds9</DataSetName>
+        <Left>0.00001in</Left>
+        <Height>0.2in</Height>
+        <Width>2.03726in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+    </ReportItems>
+    <Height>0.2in</Height>
+    <Style />
+  </Body>
+  <Width>2.03727in</Width>
+  <Page>
+    <PageHeight>11.69in</PageHeight>
+    <PageWidth>8.27in</PageWidth>
+    <LeftMargin>0.51in</LeftMargin>
+    <RightMargin>0.11in</RightMargin>
+    <TopMargin>0.68in</TopMargin>
+    <BottomMargin>0.49in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dsRpt">
+      <DataSourceReference>dsRpt</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>e637a9b5-fb81-4eec-aa0a-4f0812bbf414</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="ds9">
+      <Query>
+        <DataSourceName>dsRpt</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@MRNo">
+            <Value>=Parameters!MRNo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@JDNo">
+            <Value>=Parameters!JDNo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@HRANNo">
+            <Value>=Parameters!HRANNo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@PlantillaNo">
+            <Value>=Parameters!PlantillaNo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@PositionNo">
+            <Value>=Parameters!PositionNo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@TaskNo">
+            <Value>=Parameters!TaskNo.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>EMR_RptHRAN_PDF_DBMCSC17_V01_P21B</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="HRANo">
+          <DataField>HRANo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OrderNo">
+          <DataField>OrderNo</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="TitleDesc">
+          <DataField>TitleDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Others">
+          <DataField>Others</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExpeTypeNo">
+          <DataField>ExpeTypeNo</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="ExpeTypeDesc">
+          <DataField>ExpeTypeDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Remarks">
+          <DataField>Remarks</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MRNo">
+          <DataField>MRNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="JDNo">
+          <DataField>JDNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PositionNo">
+          <DataField>PositionNo</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="PositionDesc">
+          <DataField>PositionDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TaskNo">
+          <DataField>TaskNo</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="TaskDesc">
+          <DataField>TaskDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="HRANNo">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>HRANNo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="MRNo">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>MRNo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="JDNo">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>JDNo</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PlantillaNo">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Plantilla No</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PositionNo">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Position No</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TaskNo">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Task No</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>905364b7-b478-46e6-817c-9f0f11b1f137</rd:ReportID>
+</Report>

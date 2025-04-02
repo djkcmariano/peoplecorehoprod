@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="dsRpt">
+      <rd:DataSourceID>8ec15327-dd89-4dd4-9be8-dab0db12edc3</rd:DataSourceID>
+      <DataSourceReference>dsRpt</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="onlineuserno">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>onlineuserno</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="mcno">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>mcno</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <rd:ReportID>60e5dd58-4250-4f9b-8ccd-9c852e4301c8</rd:ReportID>
+  <DataSets>
+    <DataSet Name="ds">
+      <Fields>
+        <Field Name="MCNo">
+          <DataField>MCNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="AmountF">
+          <DataField>AmountF</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AmountW">
+          <DataField>AmountW</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Payment">
+          <DataField>Payment</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CheckDate">
+          <DataField>CheckDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>dsRpt</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>rpt_CheckPrint</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@onlineuserno">
+            <Value>=Parameters!onlineuserno.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@mcno">
+            <Value>=Parameters!mcno.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Code />
+  <Width>8.5in</Width>
+  <Body>
+    <ReportItems>
+      <Textbox Name="textbox4">
+        <Top>1.125in</Top>
+        <Width>7.5in</Width>
+        <Style>
+          <VerticalAlign>Bottom</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>3</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.75in</Left>
+        <Height>0.25in</Height>
+        <Value>=First(Fields!AmountW.Value)</Value>
+      </Textbox>
+      <Textbox Name="textbox3">
+        <Top>0.75in</Top>
+        <Width>2in</Width>
+        <Style>
+          <Format>N</Format>
+          <TextAlign>Left</TextAlign>
+          <VerticalAlign>Bottom</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>6.25in</Left>
+        <Height>0.25in</Height>
+        <Value>=Fields!AmountF.Value</Value>
+      </Textbox>
+      <Textbox Name="textbox2">
+        <Top>0.375in</Top>
+        <Width>1.75in</Width>
+        <Style>
+          <VerticalAlign>Bottom</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>6in</Left>
+        <Height>0.25in</Height>
+        <Value>=First(Fields!CheckDate.Value)</Value>
+      </Textbox>
+      <Textbox Name="Payment">
+        <rd:DefaultName>Payment</rd:DefaultName>
+        <Top>0.625in</Top>
+        <Width>4.75in</Width>
+        <Style>
+          <FontWeight>700</FontWeight>
+          <VerticalAlign>Bottom</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Left>1in</Left>
+        <Height>0.375in</Height>
+        <Value>=First(Fields!Payment.Value)</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>2.75in</Height>
+  </Body>
+  <Language>en-US</Language>
+</Report>

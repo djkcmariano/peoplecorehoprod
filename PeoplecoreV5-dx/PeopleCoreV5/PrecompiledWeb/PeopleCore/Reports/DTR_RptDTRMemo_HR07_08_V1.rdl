@@ -1,0 +1,1886 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.66667in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.66667in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.66667in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.66667in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.66667in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.66667in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.66667in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.66667in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.66667in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox84">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox84</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </TopBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox85">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox85</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </TopBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox86">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox86</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </TopBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox87">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox87</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </TopBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox88">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox88</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </TopBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox89">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox89</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </TopBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox90">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox90</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </TopBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox91">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox91</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </TopBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox92">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox92</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </TopBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>8.8507in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox27">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>HUMAN RESOURCE MANAGEMENT DEPARTMENT</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>12pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0cm</RightIndent>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>For                :     </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>The Deputy Governor</Label>
+                              <Value>=Fields!Signatory.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value xml:space="preserve">                            </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>Resource Management Sector</Label>
+                              <Value>=Fields!SignatoryDesc.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Thru              :     </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>The Managing Director</Label>
+                              <Value>=Fields!Signatory2.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value xml:space="preserve">                            </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>Human Resource Unit</Label>
+                              <Value>=Fields!SignatoryDesc2.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Subject          :     Dropping from the Rolls of BSP</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Date              :     </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>mm/dd/yyyy</Label>
+                              <Value>=Fields!DateToday.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>36pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value xml:space="preserve">                      </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>39.6pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>This refers to the case of </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>FullName</Label>
+                              <Value>=Fields!FullName.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>, </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>Designation</Label>
+                              <Value>=Fields!Designation.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>, </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>Department</Label>
+                              <Value>=Fields!DEPT.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>, this Bank, who has been intermittently absent by reason of illness for more than 260 working days during a 24-month period.</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>36pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>36pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Section 2.3. b of Rule XII Certain Modes of Separation – Revised Omnibus Rules on Appointments and Other Personnel Actions provides as follows:</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>36pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>36pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value> “Sec. 2.3. b Physically and Mentally Unfit. – An officer or employee who is intermittently absent by reason of illness for at least 260 working days during a 24-month period may also be declared physically unfit by the head of office.</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>1.27cm</LeftIndent>
+                          <RightIndent>0.74965cm</RightIndent>
+                          <HangingIndent>36pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>36pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Based on the foregoing, therefore, it is recommended that </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>FullName</Label>
+                              <Value>=Fields!FullName.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>, </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>Designation</Label>
+                              <Value>=Fields!Designation.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>, </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Label>Department</Label>
+                              <Value>=Fields!DEPT.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>, be dropped from the rolls of the Bangko Sentral ng Pilipinas effective ________________, without prejudice to whatever administrative or legal remedies that Management may pursue against him to secure settlement of his money and property accountabilities, if any, with the Bank.</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>36pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>39.6pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>39.6pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>39.6pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>7.2pt</LeftIndent>
+                          <RightIndent>7.2pt</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Signatory3.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0cm</RightIndent>
+                          <ListLevel>7</ListLevel>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!SignatoryDesc3.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0cm</RightIndent>
+                          <ListLevel>7</ListLevel>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Action taken pursuant to Office Nos. 33</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>7.9375cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>and 217, Series of 1994 and 1997</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>7.9375cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value xml:space="preserve">                                                                                               </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>                                                                                                   APPROVED:</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>10.4775cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <HangingIndent>-55.8pt</HangingIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>7.2pt</LeftIndent>
+                          <RightIndent>7.2pt</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Signatory4.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0cm</RightIndent>
+                          <ListLevel>7</ListLevel>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!SignatoryDesc4.Value</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0cm</RightIndent>
+                          <ListLevel>7</ListLevel>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value xml:space="preserve">                                                                           </Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                            <TextRun>
+                              <Value>Personnel Action No. _______</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>                                                                                                    Series of ______</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>                                                                                                    Date ____________________</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>10.5pt</FontSize>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Atts: a/s</Value>
+                              <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontWeight>Normal</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <LeftIndent>0cm</LeftIndent>
+                          <RightIndent>0.11465cm</RightIndent>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox27</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>0.75pt</Width>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <ColSpan>9</ColSpan>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+                <TablixCell />
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="EmployeeNo">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!EmployeeNo.Value</GroupExpression>
+                </GroupExpressions>
+                <PageBreak>
+                  <BreakLocation>End</BreakLocation>
+                </PageBreak>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!EmployeeNo.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Details" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <KeepTogether>true</KeepTogether>
+        <DataSetName>ds</DataSetName>
+        <Top>0.01389in</Top>
+        <Height>9.1007in</Height>
+        <Width>6.00003in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+    </ReportItems>
+    <Height>9.11459in</Height>
+    <Style />
+  </Body>
+  <Width>6.00003in</Width>
+  <Page>
+    <PageHeader>
+      <Height>1in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Image Name="Image1">
+          <Source>Embedded</Source>
+          <Value>bsp_logo_white</Value>
+          <Sizing>Fit</Sizing>
+          <Top>0.13083in</Top>
+          <Left>1.01212in</Left>
+          <Height>0.85292in</Height>
+          <Width>3.97579in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+        <Textbox Name="Textbox93">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>MEMORANDUM</Value>
+                  <Style>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>13pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox93</rd:DefaultName>
+          <Top>0.6782in</Top>
+          <Left>2.67954in</Left>
+          <Height>0.25in</Height>
+          <Width>1.4576in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
+    <PageFooter>
+      <Height>0.78125in</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox94">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>HR Form No. 07-008 * Version: 1 * Updated: 21 February 2011</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>9pt</FontSize>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox94</rd:DefaultName>
+          <Top>0.12374in</Top>
+          <Height>0.25in</Height>
+          <Width>3.46875in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox95">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>File/Ref.No. HRMD-LRD-YYYY-M___</Value>
+                  <Style>
+                    <FontStyle>Normal</FontStyle>
+                    <FontFamily>Calibri</FontFamily>
+                    <FontSize>9pt</FontSize>
+                    <FontWeight>Normal</FontWeight>
+                    <TextDecoration>None</TextDecoration>
+                    <Color>#000000</Color>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox95</rd:DefaultName>
+          <Top>0.12374in</Top>
+          <Left>3.8542in</Left>
+          <Height>0.25in</Height>
+          <Width>2.14583in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <PageHeight>11.69in</PageHeight>
+    <PageWidth>8.27in</PageWidth>
+    <LeftMargin>1.25in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <BottomMargin>0.7in</BottomMargin>
+    <ColumnSpacing>0.05118in</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dsrc">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=JAYPASCUAL\SQL2016;Initial Catalog=PeopleCoreV5_BSP</ConnectString>
+      </ConnectionProperties>
+      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:DataSourceID>35f9aec1-f4d0-403a-85c8-abb1b908dd4c</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="ds">
+      <Query>
+        <DataSourceName>dsrc</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@onlineuserno">
+            <Value>=Parameters!onlineuserno.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@PayLocNo">
+            <Value>=Parameters!PayLocNo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@filterbyno">
+            <Value>=Parameters!filterbyno.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@filterbyid">
+            <Value>=Parameters!filterbyid.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@startdate">
+            <Value>=Parameters!startdate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@enddate">
+            <Value>=Parameters!enddate.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SignatoryNo">
+            <Value>=Parameters!SignatoryNo.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SignatoryNo2">
+            <Value>=Parameters!SignatoryNo2.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SignatoryNo3">
+            <Value>=Parameters!SignatoryNo3.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SignatoryNo4">
+            <Value>=Parameters!SignatoryNo4.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>EDTR_RptDTRMemo_HR07_08_V1</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="EmployeeNo">
+          <DataField>EmployeeNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="EmployeeCode">
+          <DataField>EmployeeCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FullName">
+          <DataField>FullName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PositionNo">
+          <DataField>PositionNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PositionDesc">
+          <DataField>PositionDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DEPT">
+          <DataField>DEPT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DEPTEmployeeNo">
+          <DataField>DEPTEmployeeNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DEPTHeadFullName">
+          <DataField>DEPTHeadFullName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Designation">
+          <DataField>Designation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AbsHrs">
+          <DataField>AbsHrs</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DTRDate">
+          <DataField>DTRDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Effectivity">
+          <DataField>Effectivity</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Reason">
+          <DataField>Reason</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Content">
+          <DataField>Content</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Content2">
+          <DataField>Content2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Content3">
+          <DataField>Content3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Title">
+          <DataField>Title</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DateToday">
+          <DataField>DateToday</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Signatory">
+          <DataField>Signatory</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SignatoryDesc">
+          <DataField>SignatoryDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Signatory2">
+          <DataField>Signatory2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SignatoryDesc2">
+          <DataField>SignatoryDesc2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Paylocno">
+          <DataField>Paylocno</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Signatory3">
+          <DataField>Signatory3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SignatoryDesc3">
+          <DataField>SignatoryDesc3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Signatory4">
+          <DataField>Signatory4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SignatoryDesc4">
+          <DataField>SignatoryDesc4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="onlineuserno">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>onlineuserno</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PayLocNo">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Pay Loc No</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="filterbyno">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>filterbyno</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="filterbyid">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>filterbyid</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="startdate">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>startdate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="enddate">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>enddate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SignatoryNo">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Signatory No</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SignatoryNo2">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Signatory No2</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SignatoryNo3">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Signatory No3</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SignatoryNo4">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Signatory No4</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <EmbeddedImages>
+    <EmbeddedImage Name="bsp_logo_white">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0bf1788d-4aaf-4356-ab24-b23c242ac4a2</rd:ReportID>
+</Report>
