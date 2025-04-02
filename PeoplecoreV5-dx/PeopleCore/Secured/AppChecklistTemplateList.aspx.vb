@@ -11,6 +11,7 @@ Partial Class Secured_PENormsList
     Dim TransNo As Int64 = 0
     Dim PayLocNo As Int64 = 0
     Dim rowno As Integer = 0
+    Dim TableName As String = ""
 
     Dim clsGen As New clsGenericClass
 
@@ -18,6 +19,8 @@ Partial Class Secured_PENormsList
 
         UserNo = Generic.ToInt(Session("OnlineUserNo"))
         PayLocNo = Generic.ToInt(Session("xPayLocNo"))
+        TableName = Generic.ToStr(Session("xTablename"))
+
         AccessRights.CheckUser(UserNo)
         If Not IsPostBack Then
             Generic.PopulateDropDownList(UserNo, Me, "pnlPopupMain", PayLocNo)
@@ -137,6 +140,31 @@ Partial Class Secured_PENormsList
         End If
 
     End Sub
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "ChecklistTemplateNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, TableName, item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
+    End Sub
 
     Protected Sub lnkDelete_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim DeleteCount As Integer = 0
@@ -195,7 +223,7 @@ Partial Class Secured_PENormsList
 
     Protected Sub lnkCopy_Click(sender As Object, e As EventArgs)
         Dim lnkCopy As New LinkButton
-        lnkCopy = sender        
+        lnkCopy = sender
         If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowAdd) Then
             Generic.ClearControls(Me, "pnlPopupMain")
             hifChecklistTemplateNo.Value = lnkCopy.CommandArgument
@@ -257,7 +285,7 @@ Partial Class Secured_PENormsList
                 DeleteCount = DeleteCount + 1
             Next
 
-            If DeleteCount > 0 Then                
+            If DeleteCount > 0 Then
                 PopulateDetl()
                 MessageBox.Success("(" + DeleteCount.ToString + ") " + MessageTemplate.SuccessDelete, Me)
             Else
@@ -374,4 +402,5 @@ Partial Class Secured_PENormsList
 #End Region
 
 End Class
+
 

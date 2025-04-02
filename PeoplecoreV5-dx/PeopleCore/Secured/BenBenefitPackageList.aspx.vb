@@ -16,10 +16,10 @@ Partial Class Secured_SecCMSTemplateList
     Private Sub PopulateGrid()
         Dim _dt As DataTable
         _dt = SQLHelper.ExecuteDataTable("EBenefitPackage_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
-        Me.grdMain.DataSource = _dt
-        Me.grdMain.DataBind()
+        grdMain.DataSource = _dt
+        grdMain.DataBind()
 
-        If ViewState("TransNo") = 0 Then
+        If Generic.ToInt(ViewState("TransNo")) = 0 Then
             Dim obj As Object() = grdMain.GetRowValues(grdMain.VisibleStartIndex(), New String() {"BenefitPackageNo", "Code"})
             ViewState("TransNo") = obj(0)
             lblDetl.Text = obj(1)
@@ -45,9 +45,8 @@ Partial Class Secured_SecCMSTemplateList
         End If
 
         PopulateGrid()
-        'Generic.PopulateDXGridFilter(grdMain, UserNo, PayLocNo)
+        Generic.PopulateDXGridFilter(grdMain, UserNo, PayLocNo)
 
-        PopulateGroupBy()
         Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1)) : Response.Cache.SetCacheability(HttpCacheability.NoCache) : Response.Cache.SetNoStore()
 
     End Sub
@@ -416,7 +415,6 @@ Partial Class Secured_SecCMSTemplateList
 
 
 End Class
-
 
 
 

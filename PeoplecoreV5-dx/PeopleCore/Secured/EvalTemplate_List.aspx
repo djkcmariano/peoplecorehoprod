@@ -17,6 +17,7 @@
                     <ContentTemplate>                    
                         <ul class="panel-controls">
                             <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>
+                        <li><asp:LinkButton runat="server" ID="lnkArchive" OnClick="lnkArchive_Click" Text="Archive" CssClass="control-primary" /></li>
                             <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible="false" /></li>
                             <li><asp:LinkButton runat="server" ID="lnkExport" OnClick="lnkExport_Click" Text="Export" CssClass="control-primary" /></li>
                         </ul> 
@@ -40,8 +41,12 @@
                                     </dx:GridViewDataColumn>                            
                                 <dx:GridViewDataTextColumn FieldName="Code" Caption="Transaction No." />
                                 <dx:GridViewDataTextColumn FieldName="EvalTemplateCode" Caption="Code" />
-                                <dx:GridViewDataTextColumn FieldName="EvalTemplateDesc" Caption="Description" />   
-                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoder"/>                                                        
+                                <dx:GridViewDataTextColumn FieldName="EvalTemplateDesc" Caption="Description" /> 
+                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />                                             
                                 <dx:GridViewDataColumn CellStyle-HorizontalAlign="Center" Caption="Preview" HeaderStyle-HorizontalAlign="Center">
                                     <DataItemTemplate>
                                         <asp:LinkButton runat="server" ID="lnkForm" CssClass="fa fa-external-link" Font-Size="Medium" OnClick="lnkForm_Click" />

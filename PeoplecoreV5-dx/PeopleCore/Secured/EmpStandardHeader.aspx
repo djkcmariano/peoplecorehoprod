@@ -7,16 +7,18 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="col-md-2">
-                    <h4></h4>
+                    <asp:Dropdownlist ID="cboTabNo" AutoPostBack="true" OnSelectedIndexChanged="lnkSearch_Click" CssClass="form-control" runat="server" />
                 </div>
                 <div>
                     <asp:UpdatePanel runat="server" ID="UpdatePanel2">
                         <ContentTemplate>                    
                             <ul class="panel-controls">
                                 <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>
-                                <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" /></li>
+                                <li><asp:LinkButton runat="server" ID="lnkArchive" OnClick="lnkArchive_Click" Text="Archive" CssClass="control-primary" /></li>
+                                <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible="false"/></li>
                             </ul> 
-                            <uc:ConfirmBox runat="server" ID="cfbDelete" TargetControlID="lnkDelete" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?"  />                                                                         
+                            <uc:ConfirmBox runat="server" ID="cfbDelete" TargetControlID="lnkDelete" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?"  />  
+                            <uc:ConfirmBox runat="server" ID="cfbArchive" TargetControlID="lnkArchive" ConfirmMessage="Selected items will be archived. Proceed?"  />
                         </ContentTemplate>
                     </asp:UpdatePanel> 
                 </div>  
@@ -39,7 +41,12 @@
                                     <DataItemTemplate>
                                         <asp:LinkButton runat="server" ID="lnkView" CssClass="fa fa-external-link" Font-Size="Medium" OnClick="lnkForm_Click" />
                                     </DataItemTemplate>
-                                </dx:GridViewDataColumn>                                                                                                                                                 
+                                </dx:GridViewDataColumn> 
+                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />                                                                                                                                                
                                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" />
                             </Columns>                            
                         </dx:ASPxGridView>                              
@@ -96,7 +103,12 @@
                         <asp:TextBox ID="txtApplicantStandardHeaderDesc" TextMode="MultiLine" Rows="3" runat="server" CssClass="required form-control"></asp:TextBox>
                  </div>
             </div>
-                                       
+                <div class="form-group">
+                    <label class="col-md-4 control-label has-space">&nbsp;</label>
+                    <div class="col-md-7">
+                        <asp:CheckBox runat="server" ID="txtIsArchived" Text="&nbsp;Archive" />
+                    </div>
+                </div>                            
         </div>
         <div class="cf popupfooter">
          </div> 
@@ -107,3 +119,4 @@
 
 
 </asp:content>
+

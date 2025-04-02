@@ -3,7 +3,6 @@ Imports clsLib
 Imports DevExpress.Export
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Web
-
 Partial Class Secured_EmpRateClassList
     Inherits System.Web.UI.Page
 
@@ -88,7 +87,7 @@ Partial Class Secured_EmpRateClassList
         Dim IsAbsDeduct As Boolean = Generic.ToBol(chkIsAbsDeduct.Checked)
         Dim IsArchived As Boolean = Generic.ToBol(chkIsArchived.Checked)
 
-        If SQLHelper.ExecuteNonQuery("EEmployeeRateClass_WebSave", UserNo, PayLocNo, Generic.ToInt(txtCode.Text), EmployeeRateClassCode, EmployeeRateClassDesc, CalendarYear, chkIsDaily.Checked, IswithPayHol, IsHourly, IsAbsDeduct, IsArchived) > 0 Then
+        If SQLHelper.ExecuteNonQuery("EEmployeeRateClass_WebSave", UserNo, Generic.ToInt(txtCode.Text), EmployeeRateClassCode, EmployeeRateClassDesc, CalendarYear, chkIsDaily.Checked, Generic.ToInt(cboPayLocNo.SelectedValue), IswithPayHol, IsHourly, IsAbsDeduct, IsArchived) > 0 Then
             SaveRecord = True
         Else
             SaveRecord = False
@@ -113,6 +112,32 @@ Partial Class Secured_EmpRateClassList
             cboTabNo.DataBind()
         Catch ex As Exception
         End Try
+
+    End Sub
+
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "EmployeeRateClassNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EEmployeeRateClass", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
 
     End Sub
 
@@ -149,4 +174,3 @@ Partial Class Secured_EmpRateClassList
 
 
 End Class
-

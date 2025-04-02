@@ -21,7 +21,7 @@
                     <ul class="panel-controls">
                         <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>
                         <li><asp:LinkButton runat="server" ID="lnkArchive" OnClick="lnkArchive_Click" Text="Archive" CssClass="control-primary" /></li>
-                        <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" /></li>
+                        <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible="false"/></li>
                         <li><asp:LinkButton runat="server" ID="lnkExport" OnClick="lnkExport_Click" Text="Export" CssClass="control-primary" /></li>
                     </ul> 
                     <uc:ConfirmBox runat="server" ID="cfbDelete" TargetControlID="lnkDelete" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?"  />                                                   
@@ -47,9 +47,11 @@
                             <dx:GridViewDataTextColumn FieldName="Code" Caption="Reference No." />
                             <dx:GridViewDataTextColumn FieldName="tableCode" Caption="Code" />                                                                           
                             <dx:GridViewDataTextColumn FieldName="tableDesc" Caption="Description" />
-                            <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoder" />
-                            <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Date Modified" />
-                            <%--<dx:GridViewDataTextColumn FieldName="PayLocDesc" Caption="Company Name" Visible="false" />--%>
+                            <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                            <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                            <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                            <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                            <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />
                             <dx:GridViewDataCheckColumn FieldName="IsFixed" Caption="Standard" Visible="false" Width="4%" />
                             <dx:GridViewDataTextColumn FieldName="tStatus" Caption="Status" Visible="false" />
                             <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" Width="2%">
@@ -118,7 +120,7 @@
                     <asp:Textbox ID="txtRemarks" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="5" />
                 </div>
            </div>
-           <div class="form-group" style="display:none">
+           <div class="form-group" >
                 <label class="col-md-4 control-label has-space">
                 Company Name :</label>
                 <div class="col-md-7">

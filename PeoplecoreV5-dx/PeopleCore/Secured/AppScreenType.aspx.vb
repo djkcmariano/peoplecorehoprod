@@ -3,12 +3,12 @@ Imports clsLib
 Imports DevExpress.Export
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Web
-
 Partial Class Secured_AppScreenType
     Inherits System.Web.UI.Page
 
     Dim UserNo As Integer = 0
     Dim PayLocNo As Integer = 0
+    Dim TableName As String = ""
     Private Sub PopulateDropDown()
         Generic.PopulateDropDownList_Applicant(UserNo, Me, "pnlPopup", Generic.ToInt(Session("xPayLocNo")))
         Try
@@ -26,6 +26,7 @@ Partial Class Secured_AppScreenType
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         UserNo = Generic.ToInt(Session("OnlineUserNo"))
         PayLocNo = Generic.ToInt(Session("xPayLocNo"))
+        TableName = Generic.ToStr(Session("xTablename"))
         AccessRights.CheckUser(UserNo)
         If Not IsPostBack Then
             PopulateDropDown()
@@ -85,6 +86,31 @@ Partial Class Secured_AppScreenType
         Else
             MessageBox.Warning(MessageTemplate.DeniedEdit, Me)
         End If
+    End Sub
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "ApplicantScreenTypeNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, TableName, item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
     End Sub
     Protected Sub lnkDelete_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim DeleteCount As Integer = 0
@@ -223,5 +249,3 @@ Partial Class Secured_AppScreenType
 #End Region
 
 End Class
-
-

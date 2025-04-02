@@ -2,6 +2,7 @@
     AutoEventWireup="false" CodeFile="EmpRateClassList.aspx.vb" Inherits="Secured_EmpRateClassList" %>
 
 
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBody" runat="Server">
 
 <div class="page-content-wrap">         
@@ -15,9 +16,11 @@
                         <ContentTemplate>
                             <ul class="panel-controls">
                                 <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>
+                                <li><asp:LinkButton runat="server" ID="lnkArchive" OnClick="lnkArchive_Click" Text="Archive" CssClass="control-primary" /></li>
                                 <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible="false" /></li>
                                 <li><asp:LinkButton runat="server" ID="lnkExport" OnClick="lnkExport_Click" Text="Export" CssClass="control-primary" /></li>
                             </ul>
+                            <uc:ConfirmBox runat="server" ID="cfbArchive" TargetControlID="lnkArchive" ConfirmMessage="Selected items will be archived. Proceed?"  />
                         </ContentTemplate>
                         <Triggers>
                             <asp:PostBackTrigger ControlID="lnkExport" />
@@ -39,8 +42,12 @@
                                 <dx:GridViewDataTextColumn FieldName="CalendarYear" Caption="Calendar Days" />
                                 <dx:GridViewDataTextColumn FieldName="xIsDaily" Caption="Daily" /> 
                                 <dx:GridViewDataCheckColumn FieldName="IswithPayHol" Caption="With Holiday Pay" ReadOnly="true" HeaderStyle-HorizontalAlign="Center" />
-                                <dx:GridViewDataCheckColumn FieldName="IsAbsDeduct" Caption="With Abs Deduction</br> on Holiday" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" />   
-                                <dx:GridViewDataTextColumn FieldName="PayLocDesc" Caption="Company"/>  
+                                <dx:GridViewDataCheckColumn FieldName="IsAbsDeduct" Caption="With Abs Deduction</br> on Holiday" HeaderStyle-HorizontalAlign="Center" ReadOnly="true" />  
+                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" /> 
                                 <dx:GridViewCommandColumn ShowSelectCheckbox="true" Caption="Select" />                                             
                             </Columns>                            
                         </dx:ASPxGridView>    
@@ -125,7 +132,7 @@
                 </div>
             </div>
             
-            <div class="form-group" style="display:none">
+            <div class="form-group">
                 <label class="col-md-4 control-label">Company :</label>
                 <div class="col-md-7">
                     <asp:Dropdownlist ID="cboPayLocNo" CssClass="form-control" runat="server" />

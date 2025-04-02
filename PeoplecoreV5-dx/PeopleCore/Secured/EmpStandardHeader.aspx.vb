@@ -24,6 +24,13 @@ Partial Class Secured_EmpStandardHeader
         AccessRights.CheckUser(UserNo)
 
         If Not IsPostBack Then
+            Try
+                cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", Generic.ToInt(Session("OnlineUserNo")), 14)
+                cboTabNo.DataTextField = "tDesc"
+                cboTabNo.DataValueField = "tno"
+                cboTabNo.DataBind()
+            Catch ex As Exception
+            End Try
             Generic.PopulateDropDownList(UserNo, Me, "pnlPopupMain", PayLocNo)
         End If
 
@@ -40,7 +47,7 @@ Partial Class Secured_EmpStandardHeader
 #Region "Main"
     Private Sub PopulateGrid(Optional IsMain As Boolean = False)
         Dim _dt As DataTable
-        _dt = SQLHelper.ExecuteDataTable("EApplicantStandardHeader_Web", UserNo, "", PayLocNo, MenuMassNo)
+        _dt = SQLHelper.ExecuteDataTable("EApplicantStandardHeader_Web", UserNo, "", PayLocNo, MenuMassNo, Generic.ToInt(cboTabNo.SelectedValue))
         Me.grdMain.DataSource = _dt
         Me.grdMain.DataBind()
     End Sub
@@ -76,6 +83,32 @@ Partial Class Secured_EmpStandardHeader
         Else
             MessageBox.Warning(MessageTemplate.DeniedAdd, Me)
         End If
+    End Sub
+
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "ApplicantStandardHeaderNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EApplicantStandardHeader", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
     End Sub
 
     Protected Sub lnkDelete_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lnkDelete.Click
@@ -114,7 +147,7 @@ Partial Class Secured_EmpStandardHeader
         Dim PositionNo As Integer = 0 'Generic.ToInt(Me.cboPositionNo.SelectedValue)
 
         Dim dt As New DataTable, error_num As Integer = 0, error_message As String = "", tRetVal As Integer = 0
-        dt = SQLHelper.ExecuteDataTable("EApplicantStandardHeader_WebSave", UserNo, ApplicantStandardHeaderNo, ApplicantStandardHeaderCode, ApplicantStandardHeaderDesc, ApplicableYear, IsApplyAll, PositionNo, MenuMassNo, PayLocNo)
+        dt = SQLHelper.ExecuteDataTable("EApplicantStandardHeader_WebSave", UserNo, ApplicantStandardHeaderNo, ApplicantStandardHeaderCode, ApplicantStandardHeaderDesc, ApplicableYear, IsApplyAll, PositionNo, MenuMassNo, PayLocNo, Generic.ToBol(txtIsArchived.Checked))
         For Each row As DataRow In dt.Rows
             Retval = True
             error_num = Generic.ToInt(row("Error_num"))
@@ -156,5 +189,3 @@ Partial Class Secured_EmpStandardHeader
 
 
 End Class
-
-

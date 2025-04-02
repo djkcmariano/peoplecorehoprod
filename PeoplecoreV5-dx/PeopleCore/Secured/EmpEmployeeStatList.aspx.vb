@@ -58,6 +58,32 @@ Partial Class Secured_EmpEmployeeStatList
 
     End Sub
 
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "EmployeeStatNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EEmployeeStat", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
+    End Sub
+
 
     Protected Sub lnkDelete_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim DeleteCount As Integer = 0
@@ -154,7 +180,7 @@ Partial Class Secured_EmpEmployeeStatList
         Dim BIRCategoryStatNo As Integer = Generic.ToInt(cboBIRCategoryStatNo.SelectedValue)
         Dim IsArchived As Boolean = Generic.ToBol(chkIsArchived.Checked)
 
-        dt = SQLHelper.ExecuteDataTable("EEmployeeStat_WebSave", UserNo, PayLocNo, EmployeeStatNo, EmployeeStatCode, EmployeeStatDesc, BIRCategoryStatNo, IsArchived)
+        dt = SQLHelper.ExecuteDataTable("EEmployeeStat_WebSave", UserNo, EmployeeStatNo, EmployeeStatCode, EmployeeStatDesc, BIRCategoryStatNo, IsArchived, Generic.ToInt(cboPayLocNo.SelectedValue))
 
         For Each row As DataRow In dt.Rows
             retVal = True
@@ -186,10 +212,4 @@ Partial Class Secured_EmpEmployeeStatList
         End If
     End Sub
 End Class
-
-
-
-
-
-
 

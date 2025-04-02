@@ -12,10 +12,12 @@
                     <asp:UpdatePanel runat="server" ID="UpdatePanel2">
                     <ContentTemplate>                    
                         <ul class="panel-controls">                            
-                            <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>                                                    
-                            <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" /></li>
+                            <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>              
+                            <li><asp:LinkButton runat="server" ID="lnkArchive" OnClick="lnkArchive_Click" Text="Archive" CssClass="control-primary" /></li>
+                            <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible="false"/></li>
                             <li><asp:LinkButton runat="server" ID="lnkExport" OnClick="lnkExport_Click" Text="Export" CssClass="control-primary" /></li>                    
-                        </ul>                                                    
+                        </ul>         
+                        <uc:ConfirmBox runat="server" ID="cfbArchive" TargetControlID="lnkArchive" ConfirmMessage="Selected items will be archived. Proceed?"  />
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="lnkExport" />
@@ -38,7 +40,11 @@
                             <dx:GridViewDataTextColumn FieldName="EmployeeEIClearanceCateDesc" Caption="Category" />
                             <dx:GridViewDataTextColumn FieldName="DeptHeadName" Caption="Department Head" />
                             <dx:GridViewDataTextColumn FieldName="InChargeNo" Caption="Focal Person" />
-                            <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoder" />  
+                            <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                            <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                            <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                            <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                            <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />
                             <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="Page" Caption="Select" />                         
                         </Columns>                            
                     </dx:ASPxGridView>
@@ -127,7 +133,7 @@
                 </div>
             </div>
              
-            <div class="form-group" style="display:none">
+            <div class="form-group">
                 <label class="col-md-4 control-label has-space">
                 Company Name :</label>
                 <div class="col-md-7">

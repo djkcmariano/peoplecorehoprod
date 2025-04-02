@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" Theme="PCoreStyle" MasterPageFile="~/MasterPage/MasterPage.master" CodeFile="BenBenefitHMOPolicy.aspx.vb" Inherits="Secured_BenBenefitHMOPolicy" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBody" Runat="Server">
@@ -47,7 +48,12 @@
                                 <dx:GridViewDataTextColumn FieldName="OrderNo" Caption="Order Level" />
                                 <dx:GridViewDataTextColumn FieldName="FromAge" Caption="From Age" PropertiesTextEdit-DisplayFormatString="{0:N2}" />
                                 <dx:GridViewDataTextColumn FieldName="ToAge" Caption="To Age" PropertiesTextEdit-DisplayFormatString="{0:N2}" />
-                                <dx:GridViewDataCheckColumn FieldName="IsDisabled" Caption="Family member is incapacitated/PWD" />                                    
+                                <dx:GridViewDataCheckColumn FieldName="IsDisabled" Caption="Family member is incapacitated/PWD" />   
+                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />                                     
                                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="Page" Caption="Select" />
                             </Columns>                            
                         </dx:ASPxGridView>

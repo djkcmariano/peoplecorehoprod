@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="VB" Theme="PCoreStyle" MasterPageFile="~/MasterPage/MasterPage.master" AutoEventWireup="false" CodeFile="EmpSalaryLevel.aspx.vb" Inherits="Secured_EmpSalaryLevel" %>
 
-
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBody" Runat="Server">    
  <br />
     <div class="page-content-wrap" >         
@@ -15,7 +14,8 @@
                         <ContentTemplate>                                              
                         <ul class="panel-controls">                                    
                             <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>                            
-                            <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" /></li>
+                            <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible="false" /></li>
+                            <li><asp:LinkButton runat="server" ID="lnkArchive" OnClick="lnkArchive_Click" Text="Archive" CssClass="control-primary" /></li>
                             <li><asp:LinkButton runat="server" ID="lnkExport" OnClick="lnkExport_Click" Text="Export" CssClass="control-primary" /></li>
                             <uc:ConfirmBox runat="server" ID="cfbDelete" TargetControlID="lnkDelete" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?"  />
                         </ul>                                                                                                                                                     
@@ -45,7 +45,10 @@
                                     <dx:GridViewDataTextColumn FieldName="Rata" Caption="RA" PropertiesTextEdit-DisplayFormatString="{0:N2}"  Visible="false"/>
                                     <dx:GridViewDataTextColumn FieldName="TA" Caption="TA" PropertiesTextEdit-DisplayFormatString="{0:N2}" Visible="false" /> 
                                     <dx:GridViewDataCheckColumn FieldName="IsNoOT" Caption="Not Entitled for OT" /> 
-                                    <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoder" /> 
+                                    <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                    <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                    <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                    <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
                                     <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" /> 
                                     <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" />
                                 </Columns>                            

@@ -48,8 +48,11 @@
                             <dx:GridViewDataTextColumn FieldName="ExamTypeCode" Caption="Code" />                                                                           
                             <dx:GridViewDataTextColumn FieldName="ExamTypeDesc" Caption="Description" />
                             <dx:GridViewDataCheckColumn FieldName="IsCSC" Caption="CSC Eligibility" />
-                            <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoder" />
-                            <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Date Modified" />
+                            <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                            <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                            <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                            <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                            <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />
                             <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" Width="2%">
 					            <HeaderTemplate>
                                     <dx:ASPxCheckBox ID="cbCheckAll" runat="server" OnInit="cbCheckAll_Init" >
