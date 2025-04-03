@@ -12,6 +12,18 @@ Partial Class Secured_DTROvertimeReasonList
     Dim PayLocNo As Integer = 0
     Dim TransNo As Integer = 0
     Protected Sub PopulateGrid()
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Try
             Dim dt As DataTable
             dt = SQLHelper.ExecuteDataTable("EOvertimeReason_Web", UserNo, Generic.ToInt(cboTabNo.SelectedValue), PayLocNo)
@@ -114,6 +126,32 @@ Partial Class Secured_DTROvertimeReasonList
         End If
     End Sub
 
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "OvertimeReasonNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EOvertimeReason", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
+    End Sub
+
     Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
         If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowDelete) Then
             Dim fieldValues As List(Of Object) = grdMain.GetSelectedFieldValues(New String() {"OvertimeReasonNo"})
@@ -132,7 +170,7 @@ Partial Class Secured_DTROvertimeReasonList
     Private Function SaveRecord() As Boolean
 
         Dim obj As Object
-        obj = SQLHelper.ExecuteScalar("EOvertimeReason_WebSave", UserNo, Generic.ToInt(txtCode.Text), txtOvertimeReasonDesc.Text, PayLocNo)
+        obj = SQLHelper.ExecuteScalar("EOvertimeReason_WebSave", UserNo, Generic.ToInt(txtCode.Text), txtOvertimeReasonDesc.Text, PayLocNo, Generic.ToInt(chkIsArchived.Checked))
         If Generic.ToInt(obj) = 0 Then
             SaveRecord = True
         ElseIf Generic.ToInt(obj) = 2 Then
