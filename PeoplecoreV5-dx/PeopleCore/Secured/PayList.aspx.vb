@@ -18,6 +18,8 @@ Partial Class Secured_PayList
         _dt = SQLHelper.ExecuteDataTable("EPay_Web", UserNo, Generic.ToInt(cboTabNo.SelectedValue), 1, PayLocNo)
         Me.grdMain.DataSource = _dt
         Me.grdMain.DataBind()
+
+        '' THis is my changes
     End Sub
 
     Private Sub PopulateDropDownList()
