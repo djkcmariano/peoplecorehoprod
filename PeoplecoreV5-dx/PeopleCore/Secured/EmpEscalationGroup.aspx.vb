@@ -101,11 +101,21 @@ Partial Class Secured_SecEscalationGroup
                 Dim IsEnabled As Boolean = Generic.ToBol(obj(1))
                 PopulateData(Generic.ToInt(container.Grid.GetRowValues(container.VisibleIndex, New String() {"SectionPositionGrpNo"})))
                 lnkSave.Enabled = IsEnabled
+                Try
+                    cboPayLocNo.DataSource = SQLHelper.ExecuteDataSet("EPayLoc_WebLookup_Reference", UserNo, PayLocNo)
+                    cboPayLocNo.DataTextField = "tdesc"
+                    cboPayLocNo.DataValueField = "tNo"
+                    cboPayLocNo.DataBind()
+
+                Catch ex As Exception
+
+                End Try
                 mdlMain.Show()
 
             Else
                 MessageBox.Warning(MessageTemplate.DeniedEdit, Me)
             End If
+
 
         Catch ex As Exception
         End Try
@@ -119,6 +129,32 @@ Partial Class Secured_SecEscalationGroup
         ViewState("TransNo") = obj(0)
         lbl.Text = obj(1)
         PopulateGridDetl()
+
+    End Sub
+
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "SectionPositionGrpNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "ESectionPositionGrp", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
 
     End Sub
 
@@ -320,14 +356,6 @@ Partial Class Secured_SecEscalationGroup
 #End Region
 
 End Class
-
-
-
-
-
-
-
-
 
 
 

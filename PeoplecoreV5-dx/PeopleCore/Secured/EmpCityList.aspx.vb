@@ -1,8 +1,8 @@
 ﻿Imports System.Data
 Imports clsLib
-Imports DevExpress.Export
-Imports DevExpress.XtraPrinting
 Imports DevExpress.Web
+Imports DevExpress.XtraPrinting
+Imports DevExpress.Export
 
 Partial Class Secured_EmpCityList
     Inherits System.Web.UI.Page
@@ -27,20 +27,29 @@ Partial Class Secured_EmpCityList
     Protected Sub PopulateGrid()
         Try
             Dim dt As DataTable
-            dt = SQLHelper.ExecuteDataTable("ECity_Web", UserNo, PayLocNo)
+            dt = SQLHelper.ExecuteDataTable("ECity_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
             grdMain.DataSource = dt
             grdMain.DataBind()
         Catch ex As Exception
 
         End Try
     End Sub
-
+    Protected Sub lnkSearch_Click(sender As Object, e As EventArgs)
+        PopulateGrid()
+    End Sub
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         UserNo = Generic.ToInt(Session("OnlineUserNo"))
         TransNo = Generic.ToInt(Request.QueryString("id"))
         PayLocNo = Generic.ToInt(Session("xPayLocNo"))
         AccessRights.CheckUser(UserNo)
         If Not IsPostBack Then
+            Try
+                cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", Generic.ToInt(Session("OnlineUserNo")), 14)
+                cboTabNo.DataTextField = "tDesc"
+                cboTabNo.DataValueField = "tno"
+                cboTabNo.DataBind()
+            Catch ex As Exception
+            End Try
             Generic.PopulateDropDownList(UserNo, Me, "pnlPopupMain", Generic.ToInt(Session("xPayLocNo")))
         End If
         PopulateGrid()
@@ -100,6 +109,32 @@ Partial Class Secured_EmpCityList
         Else
             MessageBox.Warning(MessageTemplate.DeniedEdit, Me)
         End If
+    End Sub
+
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "CityNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "ECity", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
     End Sub
 
     Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)

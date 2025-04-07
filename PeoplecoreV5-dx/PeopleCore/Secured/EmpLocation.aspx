@@ -49,8 +49,10 @@
                             <dx:GridViewDataTextColumn FieldName="LocationDesc" Caption="Description" />
                             <dx:GridViewDataTextColumn FieldName="AreaTypeDesc" Caption="Area Type" />
                             <dx:GridViewDataTextColumn FieldName="RegionCode" Caption="Region" />
-                            <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoder" />
-                            <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Date Modified" />
+                            <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                            <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                            <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                            <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
                             <dx:GridViewDataCheckColumn FieldName="IsFixed" Caption="Standard" Visible="false" Width="4%" />
                             <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" /> 
                             <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" Width="2%">

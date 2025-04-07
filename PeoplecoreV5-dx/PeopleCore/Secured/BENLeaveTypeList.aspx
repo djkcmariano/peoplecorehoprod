@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" Theme="PCoreStyle" MasterPageFile="~/MasterPage/MasterPage.master" CodeFile="BENLeaveTypeList.aspx.vb" Inherits="Secured_BENLeaveTypeList" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" Theme="PCoreStyle" MasterPageFile="~/MasterPage/MasterPage.master" CodeFile="BENLeaveTypeList.aspx.vb" Inherits="Secured_BENLeaveTypeList" %> 
 
 <asp:Content id="Content3" contentplaceholderid="cphBody" runat="server">
     <div class="page-content-wrap">
@@ -50,10 +50,13 @@
                                     <dx:GridViewDataCheckColumn FieldName="IsWithPay" Caption="Pay" />
                                     <dx:GridViewDataCheckColumn FieldName="IsMaintainBalance" Caption="Balance" />
                                     <dx:GridViewDataCheckColumn FieldName="IsOnline" Caption="Used Online" Visible="false" />
-                                    <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoder" />
-                                    <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />
                                     <dx:GridViewDataTextColumn FieldName="MaxFiledHrs" Caption="Max. Filed Hrs" Visible="false" />
-                                    <dx:GridViewDataTextColumn FieldName="ForfeitedTypeDesc" Caption="Forfeited Type" Visible="false" />
+                                    <dx:GridViewDataTextColumn FieldName="ForfeitedTypeDesc" Caption="Forfeited Type" Visible="false" />   
+                                    <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                    <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                    <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                    <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                    <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />   
                                     <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="Page" Caption="Select" />
                                 </Columns>
                             </dx:ASPxGridView>
@@ -274,7 +277,7 @@
                         <asp:CheckBox runat="server" ID="chkIsArchived" Text="&nbsp;Archive" />
                     </div>
                 </div>
-                <div class="form-group" style="display:none";>
+                <div class="form-group">
                     <label class="col-md-4 control-label has-space">
                     Company Name :</label>
                     <div class="col-md-7">

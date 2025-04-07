@@ -3,7 +3,6 @@ Imports System.Data
 Imports DevExpress.Export
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Web
-
 Partial Class Secured_EmpHRANTypeApproverEscal
     Inherits System.Web.UI.Page
 
@@ -17,7 +16,7 @@ Partial Class Secured_EmpHRANTypeApproverEscal
 
     Private Sub PopulateGrid()
         Dim _dt As DataTable
-        _dt = SQLHelper.ExecuteDataTable("EHRANTypeApproverEscal_Web", UserNo, PayLocNo)
+        _dt = SQLHelper.ExecuteDataTable("EHRANTypeApproverEscal_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
         Me.grdMain.DataSource = _dt
         Me.grdMain.DataBind()
     End Sub
@@ -29,12 +28,24 @@ Partial Class Secured_EmpHRANTypeApproverEscal
         grdDetl.DataBind()
     End Sub
 
+    Protected Sub lnkSearch_Click(sender As Object, e As EventArgs)
+        PopulateGrid()
+    End Sub
+
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         UserNo = Generic.ToInt(Session("OnlineUserNo"))
         PayLocNo = Generic.ToInt(Session("xPayLocNo"))
         AccessRights.CheckUser(UserNo)
 
         If Not IsPostBack Then
+            Try
+                cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", Generic.ToInt(Session("OnlineUserNo")), 14)
+                cboTabNo.DataTextField = "tDesc"
+                cboTabNo.DataValueField = "tno"
+                cboTabNo.DataBind()
+            Catch ex As Exception
+            End Try
             Generic.PopulateDropDownList(UserNo, Me, "pnlPopupMain", PayLocNo)
             Generic.PopulateDropDownList(UserNo, Me, "pnlPopupDetl", PayLocNo)
         End If
@@ -68,6 +79,32 @@ Partial Class Secured_EmpHRANTypeApproverEscal
         Catch ex As Exception
             MessageBox.Warning("Error exporting to excel file.", Me)
         End Try
+
+    End Sub
+
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "HRANTypeApproverEscalNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EHRANTypeApproverEscal", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
 
     End Sub
 
@@ -157,7 +194,7 @@ Partial Class Secured_EmpHRANTypeApproverEscal
                 Exit Sub
             End If
 
-            If SQLHelper.ExecuteNonQuery("EHRANTypeApproverEscal_WebSave", UserNo, HRANTypeApproverEscalNo, HRANTypeNo, HRANTypeApproverEscalDesc, SectionPositionGrpNo, NoOfScal, OrganizationLimitNo, EmployeeClassNo, JobGradeGroupNo, JobGradeNo, PayLocNo) > 0 Then
+            If SQLHelper.ExecuteNonQuery("EHRANTypeApproverEscal_WebSave", UserNo, HRANTypeApproverEscalNo, HRANTypeNo, HRANTypeApproverEscalDesc, SectionPositionGrpNo, NoOfScal, OrganizationLimitNo, EmployeeClassNo, JobGradeGroupNo, JobGradeNo, PayLocNo, Generic.ToInt(chkIsArchived.Checked)) > 0 Then
                 Retval = True
             Else
                 Retval = False
@@ -323,4 +360,3 @@ Partial Class Secured_EmpHRANTypeApproverEscal
 #End Region
 
 End Class
-

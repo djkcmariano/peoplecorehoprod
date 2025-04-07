@@ -1,8 +1,8 @@
 ﻿Imports System.Data
 Imports clsLib
 Imports DevExpress.Export
-Imports DevExpress.XtraPrinting
 Imports DevExpress.Web
+Imports DevExpress.XtraPrinting
 
 Partial Class Secured_PayBonusTypeList
     Inherits System.Web.UI.Page
@@ -13,12 +13,31 @@ Partial Class Secured_PayBonusTypeList
     Dim rowno As Integer = 0
 
     Private Sub PopulateGrid()
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Dim _dt As DataTable
-        _dt = SQLHelper.ExecuteDataTable("EBonusType_Web", UserNo, PayLocNo)
+        _dt = SQLHelper.ExecuteDataTable("EBonusType_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
         Me.grdMain.DataSource = _dt
         Me.grdMain.DataBind()
     End Sub
     Private Sub PopulateDropDown()
+        Try
+            cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", Generic.ToInt(Session("OnlineUserNo")), 14)
+            cboTabNo.DataTextField = "tDesc"
+            cboTabNo.DataValueField = "tno"
+            cboTabNo.DataBind()
+        Catch ex As Exception
+        End Try
         Try
             cboPayIncomeTypeNo.DataSource = SQLHelper.ExecuteDataSet("EPayIncomeType_WebLookup", UserNo, PayLocNo)
             cboPayIncomeTypeNo.DataTextField = "tDesc"
@@ -27,6 +46,9 @@ Partial Class Secured_PayBonusTypeList
         Catch ex As Exception
 
         End Try
+    End Sub
+    Protected Sub lnkSearch_Click(sender As Object, e As EventArgs)
+        PopulateGrid()
     End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         UserNo = Generic.ToInt(Session("OnlineUserNo"))
@@ -53,6 +75,32 @@ Partial Class Secured_PayBonusTypeList
         Catch ex As Exception
             MessageBox.Warning("Error exporting to excel file.", Me)
         End Try
+
+    End Sub
+
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "BonusType"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EBonusType", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
 
     End Sub
 

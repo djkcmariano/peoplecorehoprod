@@ -45,7 +45,7 @@
                                                     <asp:LinkButton runat="server" ID="lnkDetails" CssClass="fa fa-list" Font-Size="Medium" OnClick="lnkDetails_Click" />
                                                 </DataItemTemplate>
                                             </dx:GridViewDataColumn>
-                                            <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="Page" Caption="Select" />
+                                            <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="Page" Caption="Select" Visible="false"/>
                                         </Columns>
                                     </dx:ASPxGridView>
                                 </div>

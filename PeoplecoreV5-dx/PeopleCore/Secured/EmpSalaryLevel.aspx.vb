@@ -1,8 +1,8 @@
 ﻿Imports System.Data
 Imports clsLib
+Imports DevExpress.Web
 Imports DevExpress.XtraPrinting
 Imports DevExpress.Export
-Imports DevExpress.Web
 
 Partial Class Secured_EmpSalaryLevel
     Inherits System.Web.UI.Page
@@ -10,8 +10,22 @@ Partial Class Secured_EmpSalaryLevel
     Dim UserNo As Integer = 0
     Dim PayLocNo As Integer = 0
     Dim TransNo As Integer = 0
+    Dim TableName As String
     Protected Sub PopulateGrid()
         Try
+            Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+            If tStatus = 0 Then
+                lnkDelete.Visible = False
+                lnkArchive.Visible = True
+            ElseIf tStatus = 1 Then
+                lnkDelete.Visible = True
+                lnkDelete.Visible = False
+                lnkArchive.Visible = False
+            Else
+                lnkDelete.Visible = False
+                lnkArchive.Visible = False
+            End If
+
             Dim dt As DataTable
             dt = SQLHelper.ExecuteDataTable("ESalaryLevel_Web", UserNo, Generic.ToInt(cboTabNo.SelectedValue), PayLocNo)
             grdMain.DataSource = dt
@@ -45,6 +59,7 @@ Partial Class Secured_EmpSalaryLevel
         UserNo = Generic.ToInt(Session("OnlineUserNo"))
         TransNo = Generic.ToInt(Request.QueryString("id"))
         PayLocNo = Generic.ToInt(Session("xPayLocNo"))
+        TableName = Generic.ToStr(Session("xTablename"))
 
         AccessRights.CheckUser(UserNo)
         If Not IsPostBack Then
@@ -98,7 +113,7 @@ Partial Class Secured_EmpSalaryLevel
     Protected Sub lnkEdit_Click(sender As Object, e As EventArgs)
         If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowEdit) Then
             Dim lnk As New LinkButton
-            lnk = sender            
+            lnk = sender
             'Dim container As GridViewDataItemTemplateContainer = TryCast(lnk.NamingContainer, GridViewDataItemTemplateContainer)
             Dim container As GridViewDataItemTemplateContainer = TryCast(lnk.NamingContainer, GridViewDataItemTemplateContainer)
             Dim obj As Object() = container.Grid.GetRowValues(container.VisibleIndex, New String() {"SalaryGradeNo", "IsEnabled"})
@@ -112,6 +127,31 @@ Partial Class Secured_EmpSalaryLevel
         End If
     End Sub
 
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "SalaryGradeNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, TableName, item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
+    End Sub
     Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
         If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowDelete) Then
             Dim fieldValues As List(Of Object) = grdMain.GetSelectedFieldValues(New String() {"SalaryGradeNo"})

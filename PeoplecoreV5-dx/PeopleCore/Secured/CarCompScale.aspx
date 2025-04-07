@@ -7,17 +7,19 @@
     <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="col-md-2">
-                        
-                    </div>
+                <div class="col-md-2">
+                    <asp:Dropdownlist ID="cboTabNo" AutoPostBack="true" OnSelectedIndexChanged="lnkSearch_Click" CssClass="form-control" runat="server" />
+                </div>
                     <asp:UpdatePanel runat="server" ID="UpdatePanel1">
                         <ContentTemplate>
                             <ul class="panel-controls">                                
-                                <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>                                                    
-                                <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" /></li>
+                                <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>            
+                                <li><asp:LinkButton runat="server" ID="lnkArchive" OnClick="lnkArchive_Click" Text="Archive" CssClass="control-primary" /></li>
+                                <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible="false" /></li>
                                 <li><asp:LinkButton runat="server" ID="lnkExport" OnClick="lnkExport_Click" Text="Export" CssClass="control-primary" /></li>
                             </ul>
                             <uc:ConfirmBox runat="server" ID="cfbDelete" TargetControlID="lnkDelete" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?"  />
+                            <uc:ConfirmBox runat="server" ID="cfbArchive" TargetControlID="lnkArchive" ConfirmMessage="Selected items will be archived. Proceed?"  />
                         </ContentTemplate>
                         <Triggers>
                             <asp:PostBackTrigger ControlID="lnkExport" />
@@ -107,7 +109,12 @@
                                     <dx:GridViewDataTextColumn FieldName="Code" Caption="Reference No." />
                                     <dx:GridViewDataTextColumn FieldName="CompScaleCode" Caption="Code"/>
                                     <dx:GridViewDataTextColumn FieldName="CompScaleDesc" Caption="Description" />
-                                    <dx:GridViewDataTextColumn FieldName="Profeciency" Caption="Proficiency" />                                       
+                                    <dx:GridViewDataTextColumn FieldName="Profeciency" Caption="Proficiency" />
+                                    <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                    <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                    <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                    <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                    <dx:GridViewDataComboBoxColumn FieldName="PaylocDesc" Caption="Company" />                                        
                                     <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" />
                                 </Columns>                               
                             </dx:ASPxGridView>
