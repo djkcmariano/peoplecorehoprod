@@ -866,9 +866,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label has-space">Payroll Type :</label>
+                                <label class="col-md-3 control-label has-required">Payroll Type :</label>
                                 <div class="col-md-6">
-                                    <asp:DropDownList ID="cboPayTypeNo" DataMember="EPayType" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    <asp:DropDownList ID="cboPayTypeNo" DataMember="EPayType" runat="server" CssClass="form-control required"></asp:DropDownList>
                                 </div>
                             </div>
 

@@ -8,14 +8,15 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="col-md-2">
-                        <h4></h4>
+                       <asp:Dropdownlist ID="cboTabNo" AutoPostBack="true" OnSelectedIndexChanged="lnkSearch_Click" CssClass="form-control"  runat="server" />  
                     </div>
                     <div>
                         <asp:UpdatePanel runat="server" ID="UpdatePanel2">
                             <ContentTemplate>                    
                                 <ul class="panel-controls">
                                     <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>
-                                    <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" /></li>
+                                    <li><asp:LinkButton runat="server" ID="lnkArchive" OnClick="lnkArchive_Click" Text="Archive" CssClass="control-primary" /></li>                                      
+                                    <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible="false" /></li>
                                 </ul> 
                                 <uc:ConfirmBox runat="server" ID="cfbDelete" TargetControlID="lnkDelete" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?"  />                                                                         
                             </ContentTemplate>
@@ -37,6 +38,11 @@
                                     <dx:GridViewDataTextColumn FieldName="ApplicantStandardHeaderCode" Caption="Code" />
                                     <dx:GridViewDataTextColumn FieldName="ApplicantStandardHeaderDesc" Caption="Description" />
                                     <dx:GridViewDataCheckColumn FieldName="IsApplyToAll" Caption="Apply To All" />   
+                                    <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                    <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                    <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                    <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                    <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" /> 
                                     <dx:GridViewDataColumn CellStyle-HorizontalAlign="Center" Caption="Template" HeaderStyle-HorizontalAlign="Center">
                                         <DataItemTemplate>
                                             <asp:LinkButton runat="server" ID="lnkView" CssClass="fa fa-external-link" Font-Size="Medium" OnClick="lnkForm_Click" />
@@ -153,6 +159,12 @@
                 <label class="col-md-4 control-label has-space"></label>
                 <div class="col-md-7">
                     <asp:CheckBox ID="txtIsApplyToAll" runat="server" Text="&nbsp;Tick to apply to all position(s)" />
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="col-md-4 control-label has-space">&nbsp;</label>
+                <div class="col-md-7">
+                    <asp:CheckBox runat="server" ID="chkIsArchived" Text="&nbsp;Archive" />
                 </div>
             </div>
                                       
