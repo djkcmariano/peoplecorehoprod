@@ -171,6 +171,14 @@
                     <asp:CheckBox ID="txtIsAddTakehomepay"  runat="server" Text="&nbsp;Tick to exclude income from retention" />
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label has-space"></label>
+                <div class="col-md-8">
+                    <asp:CheckBox ID="txtIsExcludeContri"  runat="server" Text="&nbsp;Tick to exclude income from SSS premium computation" />
+                </div>
+            </div>
+
             <div class="form-group">
                 <label class="col-md-4 control-label has-space"></label>
                 <div class="col-md-8">
