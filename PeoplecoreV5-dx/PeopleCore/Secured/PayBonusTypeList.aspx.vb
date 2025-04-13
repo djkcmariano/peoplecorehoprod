@@ -187,8 +187,10 @@ Partial Class Secured_PayBonusTypeList
             Dim BonusTypeCode As String = Generic.ToStr(Me.txtBonusTypeCode.Text)
             Dim BonusTypeDesc As String = Generic.ToStr(Me.txtBonusTypeDesc.Text)
             Dim payincometypeno As Integer = Generic.ToInt(Me.cboPayIncomeTypeNo.SelectedValue)
+            Dim IsArchived As Boolean = Generic.ToBol(Me.chkIsArchived.Checked)
 
-            If SQLHelper.ExecuteNonQuery("EBonusType_WebSave", UserNo, tno, BonusTypeCode, BonusTypeDesc, payincometypeno, Generic.ToInt(cboPayLocNo.SelectedValue)) > 0 Then
+
+            If SQLHelper.ExecuteNonQuery("EBonusType_WebSave", UserNo, tno, BonusTypeCode, BonusTypeDesc, payincometypeno, PayLocNo, IsArchived) > 0 Then
                 Retval = True
             Else
                 Retval = False
