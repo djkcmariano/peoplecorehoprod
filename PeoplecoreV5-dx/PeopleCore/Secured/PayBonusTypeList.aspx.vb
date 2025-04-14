@@ -195,7 +195,7 @@ Partial Class Secured_PayBonusTypeList
             Else
                 Retval = False
             End If
-
+            'Comment 2'
             If Retval Then
                 MessageBox.Success(MessageTemplate.SuccessSave, Me)
                 PopulateGrid()
