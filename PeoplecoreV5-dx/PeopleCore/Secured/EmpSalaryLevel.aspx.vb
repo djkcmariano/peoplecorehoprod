@@ -134,7 +134,7 @@ Partial Class Secured_EmpSalaryLevel
         For j As Integer = 0 To grdMain.VisibleRowCount - 1
             If grdMain.Selection.IsRowSelected(j) Then
                 Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "SalaryGradeNo"))
-                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, TableName, item, 1, PayLocNo)
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "ESalaryGrade", item, 1, PayLocNo)
                 For Each row As DataRow In dt.Rows
                     tProceed = Generic.ToBol(row("tProceed"))
                 Next

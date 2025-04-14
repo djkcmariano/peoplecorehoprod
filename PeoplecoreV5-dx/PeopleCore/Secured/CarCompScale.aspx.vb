@@ -171,7 +171,7 @@ Partial Class Secured_CarCompScale
             Exit Sub
         End If
 
-        If SQLHelper.ExecuteNonQuery("ECompScale_WebSave", UserNo, CompScaleNo, CompScaleCode, CompScaleDesc, Profeciency, Generic.ToInt(cboPayLocNo.SelectedValue)) > 0 Then
+        If SQLHelper.ExecuteNonQuery("ECompScale_WebSave", UserNo, CompScaleNo, CompScaleCode, CompScaleDesc, Profeciency, Generic.ToInt(cboPayLocNo.SelectedValue), Generic.ToInt(chkIsArchived.Checked)) > 0 Then
             Retval = True
         Else
             Retval = False
