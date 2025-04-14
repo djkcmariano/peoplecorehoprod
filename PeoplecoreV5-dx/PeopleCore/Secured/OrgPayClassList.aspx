@@ -19,6 +19,7 @@
                     </ul>
 
                     <uc:ConfirmBox ID="ConfirmBox1" runat="server" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?" TargetControlID="lnkDelete" />
+                    <uc:ConfirmBox runat="server" ID="cfbArchive" TargetControlID="lnkArchive" ConfirmMessage="Selected items will be archived. Proceed?"  />
                 </div>                                                                                                   
             </div>
             <div class="panel-body">
@@ -82,7 +83,7 @@
                     <asp:TextBox ID="txtPayClassDesc" runat="server" CssClass="form-control required" />
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label class="col-md-4 control-label has-required">Company :</label>
                 <div class="col-md-7">
                     <asp:DropDownList runat="server" ID="cboPayLocNo" CssClass="form-control required"  />
@@ -288,7 +289,12 @@
                     <asp:TextBox ID="txtTINBranchCode" runat="server" CssClass="form-control" />
                 </div>
             </div>
-                                   
+            <div class="form-group">
+                <label class="col-md-4 control-label has-space">&nbsp;</label>
+                <div class="col-md-7">
+                    <asp:CheckBox runat="server" ID="chkIsArchived" Text="&nbsp;Archive" />
+                </div>
+            </div>                     
             <br /><br />
         </div>                    
     </fieldset>
