@@ -15,39 +15,63 @@ Partial Class Secured_SecCMSTemplateList
 
     Private Sub PopulateGrid()
         Dim _dt As DataTable
-        _dt = SQLHelper.ExecuteDataTable("EBenefitPackage_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
-        grdMain.DataSource = _dt
-        grdMain.DataBind()
-
-        If Generic.ToInt(ViewState("TransNo")) = 0 Then
-            Dim obj As Object() = grdMain.GetRowValues(grdMain.VisibleStartIndex(), New String() {"BenefitPackageNo", "Code"})
-            ViewState("TransNo") = obj(0)
-            lblDetl.Text = obj(1)
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
         End If
 
-        PopulateGridDetl()
-    End Sub
 
+
+        Try
+            _dt = SQLHelper.ExecuteDataTable("EBenefitPackage_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
+            grdMain.DataSource = _dt
+            grdMain.DataBind()
+
+            If Generic.ToInt(ViewState("TransNo")) = 0 Then
+                Dim obj As Object() = grdMain.GetRowValues(grdMain.VisibleStartIndex(), New String() {"BenefitPackageNo", "Code"})
+                ViewState("TransNo") = obj(0)
+                lblDetl.Text = obj(1)
+            End If
+            PopulateGridDetl()
+
+        Catch ex As Exception
+
+        End Try
+
+
+
+
+    End Sub
+    Protected Sub PopulateDropdown()
+        Try
+            cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", Generic.ToInt(Session("OnlineUserNo")), 14)
+            cboTabNo.DataTextField = "tDesc"
+            cboTabNo.DataValueField = "tno"
+            cboTabNo.DataBind()
+        Catch ex As Exception
+        End Try
+    End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         UserNo = Generic.ToInt(Session("OnlineUserNo"))
         PayLocNo = Generic.ToInt(Session("xPayLocNo"))
         AccessRights.CheckUser(UserNo)
 
         If Not IsPostBack Then
-
-            Try
-                cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", Generic.ToInt(Session("OnlineUserNo")), 14)
-                cboTabNo.DataTextField = "tDesc"
-                cboTabNo.DataValueField = "tno"
-                cboTabNo.DataBind()
-            Catch ex As Exception
-            End Try
+            PopulateDropdown()
         End If
 
         PopulateGrid()
-        Generic.PopulateDXGridFilter(grdMain, UserNo, PayLocNo)
+        'Generic.PopulateDXGridFilter(grdMain, UserNo, PayLocNo)
 
-        Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1)) : Response.Cache.SetCacheability(HttpCacheability.NoCache) : Response.Cache.SetNoStore()
+        'Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1)) : Response.Cache.SetCacheability(HttpCacheability.NoCache) : Response.Cache.SetNoStore()
 
     End Sub
 
@@ -172,26 +196,30 @@ Partial Class Secured_SecCMSTemplateList
     End Sub
 
 
-    Protected Sub lnkArchive_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-        Dim Count As Integer = 0
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
 
-        If AccessRights.IsAllowUser(UserNo, AccessRights.EnumPermissionType.AllowDelete) Then
-            Dim fieldValues As List(Of Object) = grdMain.GetSelectedFieldValues(New String() {"BenefitPackageNo"})
-            Dim str As String = ""
-            For Each item As Integer In fieldValues
-                SQLHelper.ExecuteNonQuery("zRow_Archived", UserNo, "EBenefitPackage", item)
-                Count = Count + 1
-            Next
-
-            If Count > 0 Then
-                PopulateGrid()
-                MessageBox.Success("(" + Count.ToString + ") record(s) has been successfully archived.", Me)
-            Else
-                MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "BenefitPackageNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EBenefitPackage", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
             End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
         Else
-            MessageBox.Warning(AccessRights.GetDeniedMessage(AccessRights.EnumPermissionType.AllowDelete), Me)
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
         End If
+
+
     End Sub
 
     Protected Sub lnkDetail_Click(sender As Object, e As EventArgs)
@@ -274,10 +302,14 @@ Partial Class Secured_SecCMSTemplateList
 
 #Region "Detail"
     Private Sub PopulateGridDetl()
-        Dim dt As DataTable
-        dt = SQLHelper.ExecuteDataTable("EBenefitPackageDeti_Web", UserNo, Generic.ToInt(ViewState("TransNo")))
-        grdDetl.DataSource = dt
-        grdDetl.DataBind()
+        Try
+            Dim dt As DataTable
+            dt = SQLHelper.ExecuteDataTable("EBenefitPackageDeti_Web", UserNo, Generic.ToInt(ViewState("TransNo")))
+            grdDetl.DataSource = dt
+            grdDetl.DataBind()
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Protected Sub lnkExportDetl_Click(sender As Object, e As EventArgs)

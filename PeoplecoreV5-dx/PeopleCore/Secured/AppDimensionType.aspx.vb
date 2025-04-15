@@ -196,7 +196,7 @@ Partial Class Secured_AppDimensionType
         '    End If
 
         'Next
-        If SQLHelper.ExecuteNonQuery("EApplicantDimensionType_WebSave", UserNo, tNo, tCode, tDesc, IsExit, Generic.ToInt(cboPayLocNo.SelectedValue), Generic.ToInt(chkIsArchived.Checked)) > 0 Then
+        If SQLHelper.ExecuteNonQuery("EApplicantDimensionType_WebSave", UserNo, tNo, tCode, tDesc, IsExit, PayLocNo, Generic.ToInt(chkIsArchived.Checked)) > 0 Then
             MessageBox.Success(MessageTemplate.SuccessSave, Me)
             PopulateGrid()
         Else

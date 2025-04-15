@@ -47,7 +47,12 @@
                                     <dx:GridViewDataTextColumn FieldName="Code" Caption="Reference No." />
                                     <dx:GridViewDataTextColumn FieldName="ChecklistTemplateCode" Caption="Code" />
                                     <dx:GridViewDataTextColumn FieldName="ChecklistTemplateDesc" Caption="Description" />
-                                    <dx:GridViewDataTextColumn FieldName="ApplicantCheckListTypeDesc" Caption="Checklist Type" />                                    
+                                    <dx:GridViewDataTextColumn FieldName="ApplicantCheckListTypeDesc" Caption="Checklist Type" />
+                                    <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                    <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                    <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                    <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                    <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />                  
                                     <dx:GridViewDataColumn CellStyle-HorizontalAlign="Center" Caption="Details" HeaderStyle-HorizontalAlign="Center">
                                         <DataItemTemplate>
                                             <asp:LinkButton runat="server" ID="lnkDetail" CssClass="fa fa-list" Font-Size="Medium" OnClick="lnkDetail_Click" />
@@ -57,12 +62,7 @@
                                         <DataItemTemplate>
                                             <asp:LinkButton runat="server" ID="lnkCopy" CssClass="fa fa-copy" Font-Size="Medium" OnClick="lnkCopy_Click" CommandArgument='<%# Eval("ChecklistTemplateNo") %>' />
                                         </DataItemTemplate>
-                                    </dx:GridViewDataColumn>
-                                    <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
-                                    <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
-                                    <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
-                                    <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
-                                    <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />                  
+                                    </dx:GridViewDataColumn>                                    
                                     <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" Width="2%">
 					                    <HeaderTemplate>
                                             <dx:ASPxCheckBox ID="cbCheckAll" runat="server" OnInit="cbCheckAll_Init" >
@@ -162,7 +162,7 @@
                     <asp:DropdownList ID="cboApplicantCheckListTypeNo" runat="server" DataMember="EApplicantChecklistTypeL" CssClass="form-control required"></asp:DropdownList>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="visibility:hidden">
                 <label class="col-md-4 control-label has-space">Company Name :</label>
                     <div class="col-md-7">
                         <asp:Dropdownlist ID="cboPayLocNo" runat="server" CssClass=" number form-control" >

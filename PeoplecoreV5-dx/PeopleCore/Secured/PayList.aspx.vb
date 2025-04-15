@@ -568,6 +568,20 @@ Partial Class Secured_PayList
         Response.Redirect("~/secured/paymaindeductotherlist.aspx?id=" & container.Grid.GetRowValues(container.VisibleIndex, New String() {"PayNo"}))
     End Sub
 
+
+    Protected Sub lnkHistory_Click(sender As Object, e As EventArgs)
+        'Dim lnk As New LinkButton
+        'lnk = sender
+        'Response.Redirect("~/secured/frmFileUpload.aspx?id=" & Generic.Split(lnk.CommandArgument, 0) & "&display=" & Generic.Split(lnk.CommandArgument, 1))
+        Dim lnk As New LinkButton
+        Dim AuditTableNo As Integer = 1
+        lnk = sender
+        Dim container As GridViewDataItemTemplateContainer = TryCast(lnk.NamingContainer, GridViewDataItemTemplateContainer)
+        History.xID = Generic.ToInt(Generic.Split(lnk.CommandArgument, 0))
+        History.xModify = True
+        History.Show()
+    End Sub
+
 #Region "********Reports********"
 
     Protected Sub MyGridView_FillContextMenuItems(ByVal sender As Object, ByVal e As ASPxGridViewContextMenuEventArgs)

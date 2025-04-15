@@ -37,6 +37,18 @@ Partial Class Secured_AppScreenType
 
     Private Sub PopulateGrid(Optional ByVal SortExp As String = "", Optional ByVal sordir As String = "")
         Dim _dt As DataTable
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         _dt = SQLHelper.ExecuteDataTable("EApplicantScreenType_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
         Me.grdMain.DataSource = _dt
         Me.grdMain.DataBind()
@@ -138,7 +150,7 @@ Partial Class Secured_AppScreenType
         Dim ds As New DataSet
         Dim tProceed As Integer = 0, xMessage As String = "", alertType As String = ""
 
-        ds = SQLHelper.ExecuteDataSet("ETableReferrence_WebValidate", UserNo, Session("xTableName"), Generic.ToInt(txtCode.Text), Generic.ToStr(txtApplicantScreenTypeCode.Text), Generic.ToStr(txtApplicantScreenTypeDesc.Text), Generic.ToInt(cboPayLocNo.SelectedValue))
+        ds = SQLHelper.ExecuteDataSet("ETableReferrence_WebValidate", UserNo, Session("xTableName"), Generic.ToInt(txtCode.Text), Generic.ToStr(txtApplicantScreenTypeCode.Text), Generic.ToStr(txtApplicantScreenTypeDesc.Text), PayLocNo)
         If ds.Tables.Count > 0 Then
             If ds.Tables(0).Rows.Count > 0 Then
                 tProceed = Generic.ToInt(ds.Tables(0).Rows(0)("RetVal"))

@@ -2,7 +2,12 @@
 
 
 <asp:content id="Content3" contentplaceholderid="cphBody" runat="server">
+    <script type="text/javascript">
+    function cbCheckAll_CheckedChanged(s, e) {
+        grdMain.PerformCallback(s.GetChecked().toString());
+    }
 
+    </script>
 <div class="page-content-wrap">         
     <div class="row">
             <div class="panel panel-default">
@@ -41,8 +46,12 @@
                                     </dx:GridViewDataColumn>                            
                                 <dx:GridViewDataTextColumn FieldName="Code" Caption="Reference No." />
                                 <dx:GridViewDataTextColumn FieldName="BenefitPackageCode" Caption="Code" />                                                                           
-                                <dx:GridViewDataTextColumn FieldName="BenefitPackageDesc" Caption="Description" />                                                                                                
-                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoder"/>   
+                                <dx:GridViewDataTextColumn FieldName="BenefitPackageDesc" Caption="Description" />  
+                                <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
+                                <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
+                                <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" />        
                                 <dx:GridViewDataColumn CellStyle-HorizontalAlign="Center" Caption="Details" HeaderStyle-HorizontalAlign="Center">
                                         <DataItemTemplate>
                                             <asp:LinkButton runat="server" ID="lnkDetail" CssClass="fa fa-list" Font-Size="Medium" OnClick="lnkDetail_Click" />

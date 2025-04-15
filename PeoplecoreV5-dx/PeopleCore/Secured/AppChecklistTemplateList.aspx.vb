@@ -56,6 +56,18 @@ Partial Class Secured_PENormsList
 
 #Region "Main"
     Protected Sub PopulateGrid()
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Try
             Dim dt As DataTable
             dt = SQLHelper.ExecuteDataTable("EChecklistTemplate_Web", UserNo, Generic.ToInt(cboTabNo.SelectedValue), PayLocNo)
@@ -198,7 +210,7 @@ Partial Class Secured_PENormsList
         Dim ChecklisTypeNo As Integer = Generic.ToInt(Me.cboApplicantCheckListTypeNo.SelectedValue)
         Dim IsArchived As Boolean = Generic.ToBol(Me.txtIsArchived.Checked)
 
-        If SQLHelper.ExecuteNonQuery("EChecklistTemplate_WebSave", UserNo, transNo, code, description, ChecklisTypeNo, IsArchived, Generic.ToInt(cboPayLocNo.SelectedValue), Generic.ToInt(hifChecklistTemplateNo.Value)) > 0 Then
+        If SQLHelper.ExecuteNonQuery("EChecklistTemplate_WebSave", UserNo, transNo, code, description, ChecklisTypeNo, IsArchived, PayLocNo, Generic.ToInt(hifChecklistTemplateNo.Value)) > 0 Then
             Retval = True
         Else
             Retval = False

@@ -172,7 +172,7 @@ Partial Class Secured_EvalTemplate_List
         Dim EvalTemplateDesc As String = Generic.ToStr(txtEvalTemplateDesc.Text)
         Dim Remarks As String = Generic.ToStr(txtRemarks.Text)
 
-        If SQLHelper.ExecuteNonQuery("EEvalTemplate_WebSave", UserNo, EvalTemplateNo, EvalTemplateCode, EvalTemplateDesc, Generic.ToStr(Session("xMenuType")), Remarks, Generic.ToInt(cboPayLocNo.SelectedValue), Generic.ToInt(chkIsArchived.Checked), Generic.ToInt(chkIsPanelAssess.Checked), Generic.ToInt(chkIsOnlineAssess.Checked), Generic.ToInt(chkIsExam.Checked)) > 0 Then
+        If SQLHelper.ExecuteNonQuery("EEvalTemplate_WebSave", UserNo, EvalTemplateNo, EvalTemplateCode, EvalTemplateDesc, Generic.ToStr(Session("xMenuType")), Remarks, PayLocNo, Generic.ToInt(chkIsArchived.Checked), Generic.ToInt(chkIsPanelAssess.Checked), Generic.ToInt(chkIsOnlineAssess.Checked), Generic.ToInt(chkIsExam.Checked)) > 0 Then
             Retval = True
         Else
             Retval = False
