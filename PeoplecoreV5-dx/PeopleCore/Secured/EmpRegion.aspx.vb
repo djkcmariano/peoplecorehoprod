@@ -272,7 +272,7 @@ Partial Class Secured_EmpRegion
         Dim RegionDesc As String = Generic.ToStr(txtRegionDesc.Text)
 
         Dim dt As New DataTable, error_num As Integer = 0, error_message As String = "", retVal As Boolean = False
-        dt = SQLHelper.ExecuteDataTable("ERegion_WebSave", UserNo, Generic.ToInt(txtRegionNo.Text), RegionCode, RegionDesc, Generic.ToBol(chkIsArchived.Checked), Generic.ToInt(cboPayLocNo.SelectedValue))
+        dt = SQLHelper.ExecuteDataTable("ERegion_WebSave", UserNo, Generic.ToInt(txtRegionNo.Text), RegionCode, RegionDesc, Generic.ToBol(chkIsArchived.Checked), PayLocNo)
         For Each row As DataRow In dt.Rows
             retVal = True
             error_num = Generic.ToInt(row("Error_num"))

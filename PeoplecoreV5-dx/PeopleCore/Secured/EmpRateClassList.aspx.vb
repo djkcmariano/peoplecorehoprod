@@ -20,6 +20,19 @@ Partial Class Secured_EmpRateClassList
     End Sub
 
     Private Sub PopulateGrid(Optional IsMain As Boolean = False)
+
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = False
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Dim _dt As DataTable
         _dt = SQLHelper.ExecuteDataTable("EEmployeeRateClass_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
         Me.grdMain.DataSource = _dt
@@ -87,7 +100,7 @@ Partial Class Secured_EmpRateClassList
         Dim IsAbsDeduct As Boolean = Generic.ToBol(chkIsAbsDeduct.Checked)
         Dim IsArchived As Boolean = Generic.ToBol(chkIsArchived.Checked)
 
-        If SQLHelper.ExecuteNonQuery("EEmployeeRateClass_WebSave", UserNo, Generic.ToInt(txtCode.Text), EmployeeRateClassCode, EmployeeRateClassDesc, CalendarYear, chkIsDaily.Checked, Generic.ToInt(cboPayLocNo.SelectedValue), IswithPayHol, IsHourly, IsAbsDeduct, IsArchived) > 0 Then
+        If SQLHelper.ExecuteNonQuery("EEmployeeRateClass_WebSave", UserNo, Generic.ToInt(txtCode.Text), EmployeeRateClassCode, EmployeeRateClassDesc, CalendarYear, chkIsDaily.Checked, PayLocNo, IswithPayHol, IsHourly, IsAbsDeduct, IsArchived) > 0 Then
             SaveRecord = True
         Else
             SaveRecord = False

@@ -301,8 +301,7 @@
                     <asp:HiddenField runat="server" ID="hifPayNo" />
                     <asp:Textbox ID="txtPayCode" ReadOnly="true" runat="server" CssClass="form-control" Placeholder="Autonumber" />
                 </div>
-            </div> 
-           </div> 
+            </div>  
             <div class="form-group">
                 <label class="col-md-4 control-label">Payroll Source :</label>
                 <div class="col-md-6">
@@ -499,6 +498,7 @@
                     <asp:Checkbox ID="txtIsLoyalty" runat="server" Text="&nbsp;Loyalty Award" Visible="false"  />
                 </div>
             </div>
+             </div>
             <br />          
     </fieldset>
 </asp:Panel>   

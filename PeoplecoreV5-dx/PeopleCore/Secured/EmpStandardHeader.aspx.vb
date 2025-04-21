@@ -46,6 +46,18 @@ Partial Class Secured_EmpStandardHeader
 
 #Region "Main"
     Private Sub PopulateGrid(Optional IsMain As Boolean = False)
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = False
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Dim _dt As DataTable
         _dt = SQLHelper.ExecuteDataTable("EApplicantStandardHeader_Web", UserNo, "", PayLocNo, MenuMassNo, Generic.ToInt(cboTabNo.SelectedValue))
         Me.grdMain.DataSource = _dt

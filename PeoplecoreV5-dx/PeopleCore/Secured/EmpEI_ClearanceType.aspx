@@ -133,7 +133,7 @@
                 </div>
             </div>
              
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label class="col-md-4 control-label has-space">
                 Company Name :</label>
                 <div class="col-md-7">
