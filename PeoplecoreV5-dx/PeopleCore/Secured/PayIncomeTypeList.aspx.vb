@@ -13,6 +13,18 @@ Partial Class Secured_PayIncomeTypeList
     Dim rowno As Integer = 0
 
     Private Sub PopulateGrid(Optional IsMain As Boolean = False)
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = False
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Dim _dt As DataTable
         _dt = SQLHelper.ExecuteDataTable("EPayIncomeType_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
         Me.grdMain.DataSource = _dt

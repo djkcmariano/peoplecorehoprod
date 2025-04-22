@@ -76,7 +76,7 @@ Partial Class Secured_DTRHolidayEdit
     Private Function SaveRecord() As Integer
         Dim holIn As String = Generic.ToStr(Replace(txtHolIn.Text, ":", ""))
 
-        Dim obj As Object = SQLHelper.ExecuteScalar("EHoliday_WebSave", UserNo, Generic.ToInt(txtCode.Text), txtHolidayDesc.Text, txtHolidayDate.Text, cboDayTypeNo.SelectedValue, Generic.ToDec(Me.txtNoOfHour.Text), chkIsApplyToAll.Checked, PayLocNo, chkIsAM.Checked, holIn)
+        Dim obj As Object = SQLHelper.ExecuteScalar("EHoliday_WebSave", UserNo, Generic.ToInt(txtCode.Text), txtHolidayDesc.Text, txtHolidayDate.Text, cboDayTypeNo.SelectedValue, Generic.ToDec(Me.txtNoOfHour.Text), chkIsApplyToAll.Checked, PayLocNo, chkIsAM.Checked, holIn, Generic.ToBol(chkIsArchived.Checked))
         Return Generic.ToInt(obj)
     End Function
 
