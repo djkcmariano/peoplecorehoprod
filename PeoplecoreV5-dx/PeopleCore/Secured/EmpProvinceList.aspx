@@ -60,11 +60,11 @@
                                     <dx:GridViewDataTextColumn FieldName="ProvinceCode" Caption="Code"/>
                                     <dx:GridViewDataTextColumn FieldName="ProvinceDesc" Caption="Description" />
                                     <dx:GridViewDataComboBoxColumn FieldName="RegionDesc" Caption="Region" />  
-                                    <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By"  Visible="false"/> 
-                                    <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date"  Visible="false"/> 
+                                    <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Encoded By" /> 
+                                    <dx:GridViewDataTextColumn FieldName="EncodeDate" Caption="Encoded Date" /> 
                                     <dx:GridViewDataTextColumn FieldName="ModifiedBy" Caption="Last Modified By" Visible="false"/> 
                                     <dx:GridViewDataTextColumn FieldName="ModifiedDate" Caption="Last Modified Date" Visible="false"/> 
-                                    <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company" Visible="false" />                             
+                                    <dx:GridViewDataComboBoxColumn FieldName="PayLocDesc" Caption="Company"/>                             
                                     <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" />
                                 </Columns>                            
                             </dx:ASPxGridView>    
@@ -117,6 +117,14 @@
                 </div>
             </div>
             <div class="form-group">
+                    <label class="col-md-4 control-label has-space">&nbsp;</label>
+                    <div class="col-md-7">
+                        <asp:CheckBox runat="server" ID="chkIsArchived" Text="&nbsp;Archive" />
+                    </div>
+                </div>
+            <br />
+            </div>
+            <div class="form-group" style="display:none">
                 <label class="col-md-4 control-label has-space">
                 Company Name :</label>
                 <div class="col-md-7">
@@ -124,10 +132,6 @@
                     </asp:Dropdownlist>
                 </div>
             </div> 
-            <br />
-            </div>
-            <br />
-            </div>
           <!-- Footer here -->
          
          </fieldset>

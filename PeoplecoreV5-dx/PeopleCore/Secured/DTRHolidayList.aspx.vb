@@ -10,6 +10,18 @@ Partial Class Secured_DTRHolidayList
     Dim PayLocNo As Integer = 0
 
     Protected Sub PopulateGrid()
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Try
             Dim dt As DataTable
             dt = SQLHelper.ExecuteDataTable("EHoliday_Web", UserNo, "", Generic.ToInt(cboTabNo.SelectedValue), PayLocNo)

@@ -442,6 +442,13 @@
                             </asp:Dropdownlist>
                         </div>
                     </div> 
+                <div class="form-group">
+                    <label class="col-md-3 control-label has-space">
+                    &nbsp;</label>
+                    <div class="col-md-6">
+                        <asp:CheckBox runat="server" ID="chkIsArchived" Text="&nbsp;Archive" />
+                    </div>
+                </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label has-space"></label>
                         <div class="col-md-6">            

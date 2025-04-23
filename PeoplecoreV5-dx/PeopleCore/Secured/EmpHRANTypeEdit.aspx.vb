@@ -122,6 +122,7 @@ Partial Class Secured_EmpHRANTypeEdit
             Dim IsAutoAbolish As Boolean = Generic.ToBol(Generic.ToBol(txtIsAutoAbolish.Checked))
             Dim IsContractPrep As Boolean = Generic.ToBol(txtIsContractPrep.Checked)
             Dim BIRCategorySepaNo As Integer = Generic.ToInt(cboBIRCategorySepaNo.SelectedValue)
+            Dim IsArchived As Boolean = Generic.ToBol(chkIsArchived.Checked)
 
             Dim invalid As Boolean = True, messagedialog As String = "", alerttype As String = ""
             Dim dtx As New DataTable, error_num As Integer = 0, error_message As String = ""
@@ -138,7 +139,7 @@ Partial Class Secured_EmpHRANTypeEdit
                 Exit Sub
             End If
 
-            dt = SQLHelper.ExecuteDataTable("EHRANType_WebSave", UserNo, TransNo, HRANTypeCode, HRANTypeDesc, Confirmation, IsNewHired, IsRegularized, IsSeparated, IsUnique, IsSuspendPay, IsActivePay, IsViewSalary, Remarks, IsBlacklisted, IsServiceRecord, IsRehired, IsOrientee, IsProbationary, IsAutoPost, IsPromotion, IsAppointmentReport, IsConferment, IsSalaryAdjustment, IsServicePrint, PayLocNo, IsOnline, noofScal, IsTenureContinue, IsYTDForwardToPreviousPayroll, IsConcurrent, IsWithExitInterview, IsEmploymentRecord, IsNot201, IsAutoAbolish, IsContractPrep, BIRCategorySepaNo)
+            dt = SQLHelper.ExecuteDataTable("EHRANType_WebSave", UserNo, TransNo, HRANTypeCode, HRANTypeDesc, Confirmation, IsNewHired, IsRegularized, IsSeparated, IsUnique, IsSuspendPay, IsActivePay, IsViewSalary, Remarks, IsBlacklisted, IsServiceRecord, IsRehired, IsOrientee, IsProbationary, IsAutoPost, IsPromotion, IsAppointmentReport, IsConferment, IsSalaryAdjustment, IsServicePrint, PayLocNo, IsOnline, noofScal, IsTenureContinue, IsYTDForwardToPreviousPayroll, IsConcurrent, IsWithExitInterview, IsEmploymentRecord, IsNot201, IsAutoAbolish, IsContractPrep, BIRCategorySepaNo, IsArchived)
             For Each row As DataRow In dt.Rows
                 TransNo = Generic.ToInt(row("HRANTypeNo"))
                 RetVal = True

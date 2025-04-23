@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" Theme="PCoreStyle" MasterPageFile="~/MasterPage/Masterpage.master" CodeFile="PayList.aspx.vb" Inherits="Secured_PayList" %>
-
+<%@ Register Src="~/Include/History.ascx" TagName="History" TagPrefix="uc" %>
 <asp:Content id="Content3" contentplaceholderid="cphBody" runat="server">
 <script type="text/javascript">
     function disableenable(chk) {
@@ -207,6 +207,11 @@
                                         <asp:LinkButton runat="server" ID="lnkEdit" CssClass="fa fa-pencil control-primary" Font-Size="Medium" OnClick="lnkEdit_Click" />
                                     </DataItemTemplate>
                                 </dx:GridViewDataColumn>
+                                    <dx:GridViewDataColumn Caption="History" CellStyle-HorizontalAlign="Center" Width="10">
+                                        <DataItemTemplate>
+                                            <asp:LinkButton runat="server" ID="lnkHistory" OnClick="lnkHistory_Click" CssClass="fa fa-history" CommandArgument='<%# Eval("PayNo") & "|" & Eval("PayCode")  %>' Font-Size="Medium" />
+                                        </DataItemTemplate>
+                                    </dx:GridViewDataColumn>
                                 <dx:GridViewDataTextColumn FieldName="PayCode" Caption="Payroll No." />
                                 <dx:GridViewDataTextColumn FieldName="DTRCode" Caption="DTR No." />
                                 <dx:GridViewDataTextColumn FieldName="Remarks" Caption="Remarks &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
@@ -292,12 +297,11 @@
          <div  class="entryPopupDetl form-horizontal">            
             <div class="form-group">
                 <label class="col-md-4 control-label">Payroll No. :</label>
-                <div class="col-md-6">
+                <div class="col-md-6">  
                     <asp:HiddenField runat="server" ID="hifPayNo" />
                     <asp:Textbox ID="txtPayCode" ReadOnly="true" runat="server" CssClass="form-control" Placeholder="Autonumber" />
                 </div>
-            </div> 
-            
+            </div>  
             <div class="form-group">
                 <label class="col-md-4 control-label">Payroll Source :</label>
                 <div class="col-md-6">
@@ -494,7 +498,9 @@
                     <asp:Checkbox ID="txtIsLoyalty" runat="server" Text="&nbsp;Loyalty Award" Visible="false"  />
                 </div>
             </div>
+             </div>
             <br />          
     </fieldset>
 </asp:Panel>   
+    <uc:History runat="server" ID="History" />
 </asp:Content>
