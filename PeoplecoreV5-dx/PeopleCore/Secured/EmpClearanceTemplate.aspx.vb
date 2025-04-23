@@ -27,9 +27,9 @@ Partial Class Secured_EmpClearanceTemplate
     End Sub
 
 
-    'Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
+    Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
 
-    'End Sub
+    End Sub
 
     Protected Sub cboTabNo_SelectedIndexChanged(sender As Object, e As EventArgs)
         PopulateGrid()
@@ -52,23 +52,52 @@ Partial Class Secured_EmpClearanceTemplate
 
         If Not IsPostBack Then
             PopulateDropDown()
-            PopulateGrid()
         End If
+
+        PopulateGrid()
+    End Sub
+
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "ClearanceTemplateNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EClearanceTemplate", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
     End Sub
 
     Private Sub PopulateGrid()
-
-        lnkAdd.Enabled = True
-        'lnkDelete.Enabled = True
-
-        If TabNo = 0 Then
-            TabNo = 1
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = False
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
         End If
 
-        If TabNo <> 1 Then
-            lnkAdd.Enabled = False
-            'lnkDelete.Enabled = False            
-        End If
+
 
         Dim _dt As DataTable
         _dt = SQLHelper.ExecuteDataTable("EClearanceTemplate_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
@@ -77,4 +106,67 @@ Partial Class Secured_EmpClearanceTemplate
 
     End Sub
 
+#Region "********Detail Check All********"
+
+
+    Protected Sub grdMain_CommandButtonInitialize(sender As Object, e As DevExpress.Web.ASPxGridViewCommandButtonEventArgs)
+        If e.ButtonType <> ColumnCommandButtonType.SelectCheckbox Then
+            Return
+        End If
+        Dim rowEnabled As Boolean = getRowEnabledStatus(e.VisibleIndex)
+        e.Enabled = rowEnabled
+
+        'If e.ButtonType = ColumnCommandButtonType.SelectCheckbox Then
+        '    Dim isSelected As Boolean = Convert.ToBoolean(grdMain.GetRowValues(e.VisibleIndex, "IsEnabled"))
+        '    If isSelected Then
+
+        '        grdMain.Selection.SetSelection(e.VisibleIndex, True)
+
+        '    End If
+        'End If
+    End Sub
+    Private Function getRowEnabledStatus(ByVal VisibleIndex As Integer) As Boolean
+        Dim value As Boolean = Generic.ToInt(grdMain.GetRowValues(VisibleIndex, "IsEnabled"))
+        If value = True Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+    Protected Sub cbCheckAll_Init(ByVal sender As Object, ByVal e As EventArgs)
+        Dim cb As ASPxCheckBox = DirectCast(sender, ASPxCheckBox)
+        cb.ClientSideEvents.CheckedChanged = String.Format("cbCheckAll_CheckedChanged")
+        cb.Checked = False
+        Dim count As Integer = 0
+        Dim startIndex As Integer = grdMain.PageIndex * grdMain.SettingsPager.PageSize
+        Dim endIndex As Integer = Math.Min(grdMain.VisibleRowCount, startIndex + grdMain.SettingsPager.PageSize)
+
+        For i As Integer = startIndex To endIndex - 1
+            If grdMain.Selection.IsRowSelected(i) Then
+                count = count + 1
+            End If
+        Next i
+
+        If count > 0 Then
+            cb.Checked = True
+        End If
+
+    End Sub
+    Protected Sub gridMain_CustomCallback(ByVal sender As Object, ByVal e As ASPxGridViewCustomCallbackEventArgs)
+        Boolean.TryParse(e.Parameters, False)
+
+        Dim startIndex As Integer = grdMain.PageIndex * grdMain.SettingsPager.PageSize
+        Dim endIndex As Integer = Math.Min(grdMain.VisibleRowCount, startIndex + grdMain.SettingsPager.PageSize)
+        For i As Integer = startIndex To endIndex - 1
+            Dim rowEnabled As Boolean = getRowEnabledStatus(i)
+            If rowEnabled AndAlso e.Parameters = "true" Then
+                grdMain.Selection.SelectRow(i)
+            Else
+                grdMain.Selection.UnselectRow(i)
+            End If
+        Next i
+
+    End Sub
+
+#End Region
 End Class

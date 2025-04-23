@@ -12,6 +12,18 @@ Partial Class Secured_HRANCheckListRef
     Dim TableName As String
 
     Private Sub PopulateGrid()
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = False
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Dim _dt As DataTable
         _dt = SQLHelper.ExecuteDataTable("EApplicantStandardCheckList_Web", UserNo, 2, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
         Me.grdMain.DataSource = _dt
@@ -112,7 +124,7 @@ Partial Class Secured_HRANCheckListRef
         Dim IsDownload As Boolean = Generic.ToBol(Me.txtIsDownload.Checked)
         Dim CategoryNo As Integer = Generic.ToInt(cboApplicantCheckListCateNo.SelectedValue)
 
-        If SQLHelper.ExecuteNonQuery("EApplicantStandardCheckList_WebSave", UserNo, tno, code, description, typeno, IsRequired, IsOnline, IsDownload, Generic.ToInt(cboPayLocNo.SelectedValue), CategoryNo, Generic.ToInt(chkIsArchived.Checked)) > 0 Then
+        If SQLHelper.ExecuteNonQuery("EApplicantStandardCheckList_WebSave", UserNo, tno, code, description, typeno, IsRequired, IsOnline, IsDownload, PayLocNo, CategoryNo, Generic.ToInt(chkIsArchived.Checked)) > 0 Then
             Retval = True
         Else
             Retval = False

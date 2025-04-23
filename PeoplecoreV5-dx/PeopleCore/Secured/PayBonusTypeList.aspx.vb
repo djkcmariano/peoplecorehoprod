@@ -192,10 +192,11 @@ Partial Class Secured_PayBonusTypeList
 
             If SQLHelper.ExecuteNonQuery("EBonusType_WebSave", UserNo, tno, BonusTypeCode, BonusTypeDesc, payincometypeno, PayLocNo, IsArchived) > 0 Then
                 Retval = True
+                'comment'
             Else
                 Retval = False
             End If
-
+            'Comment 2'
             If Retval Then
                 MessageBox.Success(MessageTemplate.SuccessSave, Me)
                 PopulateGrid()

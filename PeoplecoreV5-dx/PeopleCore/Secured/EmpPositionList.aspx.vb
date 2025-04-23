@@ -7,9 +7,22 @@ Imports DevExpress.Web
 Partial Class Secured_EmpPositionList
     Inherits System.Web.UI.Page
     Dim UserNo As Integer = 0
-    Dim PayLocNo As Integer = 0    
+    Dim PayLocNo As Integer = 0
 
     Private Sub PopulateGrid(Optional IsMain As Boolean = False)
+
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Dim _dt As DataTable
         _dt = SQLHelper.ExecuteDataTable("EPosition_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
         Me.grdMain.DataSource = _dt
@@ -99,6 +112,31 @@ Partial Class Secured_EmpPositionList
         Else
             MessageBox.Warning(MessageTemplate.DeniedDelete, Me)
         End If
+    End Sub
+    Protected Sub lnkArchive_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "PositionNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableReferrence_WebArchived", UserNo, "EPosition", item, 1, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully archived.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
     End Sub
 
     Protected Sub lnkDeleteDetl_Click(sender As Object, e As EventArgs)

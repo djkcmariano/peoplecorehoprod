@@ -120,7 +120,7 @@
                 <div>                
                     <ul class="panel-controls"> 
                         &nbsp;                                                       
-                        <li><asp:LinkButton runat="server" ID="lnkSaveDetl" OnClick="lnkSaveDetl_Click" Text="Save" CssClass="control-primary" Visible="false" /></li>       
+                        <li><asp:LinkButton runat="server" ID="lnkSaveDetl" OnClick="lnkSaveDetl_Click" Text="Save" CssClass="control-primary" /></li>       
                         <li>
                             <asp:LinkButton runat="server" ID="lnkCancel" OnClick="lnkCancel_Click" Text="Cancel" CssClass="control-primary" />
                         </li>             

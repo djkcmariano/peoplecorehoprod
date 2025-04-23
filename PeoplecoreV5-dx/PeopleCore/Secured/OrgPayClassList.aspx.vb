@@ -194,7 +194,7 @@ Partial Class Secured_OrgPayClassList
 
         Dim payclasscode As String = Generic.ToStr(Me.txtPayClassCode.Text)
         Dim payclassdesc As String = Generic.ToStr(Me.txtPayClassDesc.Text)
-        Dim paylocno As Integer = Generic.ToInt(Me.cboPayLocNo.SelectedValue)
+        'Dim paylocno As Integer = Generic.ToInt(Me.cboPayLocNo.SelectedValue)
         Dim notedbyno As Integer = Generic.ToInt(hifnotedbyno.Value)
         Dim notedbyno2 As Integer = Generic.ToInt(hifnotedbyno2.Value)
         Dim preparedbyno As Integer = Generic.ToInt(hifpreparedbyno.Value)
@@ -210,11 +210,12 @@ Partial Class Secured_OrgPayClassList
         Dim tinbranchcode As String = Generic.ToStr(Me.txtTINBranchCode.Text)
         Dim IsCrew As Boolean = Generic.ToBol(txtIsCrew.Checked)
         Dim NPNo As Integer = Generic.ToInt(cboNPNo.SelectedValue)
+        Dim IsArchived As Boolean = Generic.ToBol(chkIsArchived.Checked)
 
 
         If SQLHelper.ExecuteNonQuery("EPayClass_WebSave", UserNo, Generic.ToInt(txtCode.Text), payclasscode, payclassdesc, paylocno, notedbyno,
                                      notedbyno2, preparedbyno, preparedbyno2, reviewedbyno, reviewedbyno2, approvedbyno, approvedbyno2, sssno,
-                                     phno, hdmfno, tinno, tinbranchcode, IsCrew, NPNo) > 0 Then
+                                     phno, hdmfno, tinno, tinbranchcode, IsCrew, NPNo, IsArchived) > 0 Then
             SaveRecord = True
         Else
             SaveRecord = False

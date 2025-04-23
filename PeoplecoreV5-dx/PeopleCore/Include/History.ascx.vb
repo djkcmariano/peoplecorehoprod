@@ -57,14 +57,26 @@ Partial Class Include_History
         If Generic.ToStr(xMenuType) = "" Then
             xMenuType = Generic.ToStr(Session("xMenuType"))
         End If
-        Try
-            Dim _dt As DataTable
-            _dt = SQLHelper.ExecuteDataTable("EDTRProcessLog_Web", UserNo, PayLocNo, Generic.ToInt(hifNo.Value))
-            Me.grdMain.DataSource = _dt
-            Me.grdMain.DataBind()
-        Catch ex As Exception
 
-        End Try
+        If Generic.ToStr(xMenuType) = "0507010000" Then
+            Try
+                Dim _dt As DataTable
+                _dt = SQLHelper.ExecuteDataTable("EPayProcessLog_Web", UserNo, PayLocNo, Generic.ToInt(hifNo.Value))
+                Me.grdMain.DataSource = _dt
+                Me.grdMain.DataBind()
+            Catch ex As Exception
 
+            End Try
+        Else
+
+            Try
+                Dim _dt As DataTable
+                _dt = SQLHelper.ExecuteDataTable("EDTRProcessLog_Web", UserNo, PayLocNo, Generic.ToInt(hifNo.Value))
+                Me.grdMain.DataSource = _dt
+                Me.grdMain.DataBind()
+            Catch ex As Exception
+
+            End Try
+        End If
     End Sub
 End Class

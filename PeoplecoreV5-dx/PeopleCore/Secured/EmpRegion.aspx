@@ -9,7 +9,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="col-md-2">
-                    <asp:Dropdownlist ID="cboTabNo" Visible="false" AutoPostBack="true" OnSelectedIndexChanged="lnkSearch_Click" CssClass="form-control" runat="server" />
+                    <asp:Dropdownlist ID="cboTabNo" AutoPostBack="true" OnSelectedIndexChanged="lnkSearch_Click" CssClass="form-control" runat="server" />
                 </div>
                 <asp:UpdatePanel runat="server" ID="UpdatePanel1">
                     <ContentTemplate>
@@ -139,14 +139,14 @@
                     <asp:TextBox ID="txtRegionDesc" runat="server" CssClass="required form-control" />
                 </div>
             </div> 
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label class="col-md-4 control-label has-space">Company Name :</label>
                 <div class="col-md-7">
                     <asp:Dropdownlist ID="cboPayLocNo" runat="server" CssClass=" number form-control" >
                     </asp:Dropdownlist>
                 </div>
             </div>
-            <div class="form-group" style="display:none;">
+            <div class="form-group" >
                 <label class="col-md-4 control-label has-space">&nbsp;</label>
                 <div class="col-md-7">
                     <asp:CheckBox runat="server" ID="chkIsArchived" Text="&nbsp;Archive" />

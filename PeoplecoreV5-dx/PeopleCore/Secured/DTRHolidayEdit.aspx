@@ -100,6 +100,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-md-4 control-label has-space">
+                    &nbsp;</label>
+                    <div class="col-md-7">
+                        <asp:CheckBox runat="server" ID="chkIsArchived" Text="&nbsp;Archive" />
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-md-4 control-label">&nbsp;</label>
                     <div class="col-md-7">
                         <asp:Button runat="server" ID="btnSave" CssClass="btn btn-default submit fsMain" Text="Save" OnClick="btnSave_Click" />

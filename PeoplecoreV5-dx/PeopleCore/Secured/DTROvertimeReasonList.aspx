@@ -86,7 +86,7 @@
                 </div>
             </div> 
             
-            <div class="form-group">
+            <div class="form-group" style="display:none;">
                 <label class="col-md-4 control-label has-space">Company Name :</label>
                 <div class="col-md-7">
                     <asp:Dropdownlist ID="cboPayLocNo" runat="server" CssClass=" number form-control" >
@@ -99,7 +99,7 @@
                     <asp:CheckBox runat="server" ID="chkIsArchived" Text="&nbsp;Archive" />
                 </div>
             </div>
-            <div class="form-group" style="visibility:hidden;">
+            <div class="form-group" style="display:none;">
                 <label class="col-md-4 control-label">Please check here</label>
                 <div class="col-md-7">
                         <asp:CheckBox ID="txtIsApplyToAll" runat="server" />  &nbsp;

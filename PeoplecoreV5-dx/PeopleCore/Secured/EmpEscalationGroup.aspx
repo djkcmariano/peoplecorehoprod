@@ -156,13 +156,13 @@
                     <asp:Textbox ID="txtSectionPositionGrpDesc" runat="server" CssClass="form-control required" />
                 </div>
             </div>
-            <div class="form-group" style="visibility:hidden;position:absolute;">
+            <div class="form-group">
                 <label class="col-md-4 control-label has-space">&nbsp;</label>
                 <div class="col-md-7">
                     <asp:CheckBox runat="server" ID="chkIsArchived" Text="&nbsp;Archive" />
                 </div>
             </div> 
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label class="col-md-4 control-label has-space">Company Name :</label>
                     <div class="col-md-7">
                         <asp:Dropdownlist ID="cboPayLocNo" runat="server" CssClass=" number form-control" >
