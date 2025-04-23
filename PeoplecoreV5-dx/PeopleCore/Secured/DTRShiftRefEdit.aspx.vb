@@ -114,6 +114,7 @@ Partial Class Secured_PayLoanEdit
             Dim AdjustedHrsUnder As Decimal = Generic.ToDec(Me.txtAdjustedHrsUnder.Text)
             Dim IsWFH As Boolean = Generic.ToBol(chkIsWFH.Checked)
             Dim WorkHrsLimit As Decimal = Generic.ToDec(Me.txtWorkHrsLimit.Text)
+            Dim IsArchived As Boolean = Generic.ToBol(Me.chkIsArchived.Checked)
             'Dim ReportHrs As Decimal = Generic.ToDec(Me.txtrephrs.Text)
 
             '//validate start here
@@ -132,7 +133,7 @@ Partial Class Secured_PayLoanEdit
                 Exit Sub
             End If
 
-            dt = SQLHelper.ExecuteDataTable("EShift_WebSave", UserNo, PayLocNo, ShiftNo, ShiftCode, ShiftDesc, In1, Out1, In2, Out2, BreakHrs1, Hrs, NoOfSwipe, IsFlex, IsAdjustedFlex, AdjustedHrs, IsNonPunching, IsDailyFlex, IsCompress, OTStart, OTEnd, OTAdj, IsGraveyard, IsOTApply, BreakIn, BreakOut, IsFlexibreak, IsAddLate, AddLate, IsApplyToAll, IsSatUnder, IsAdjustedFlexUnder, AdjustedHrsUnder, IsWFH, WorkHrsLimit)
+            dt = SQLHelper.ExecuteDataTable("EShift_WebSave", UserNo, PayLocNo, ShiftNo, ShiftCode, ShiftDesc, In1, Out1, In2, Out2, BreakHrs1, Hrs, NoOfSwipe, IsFlex, IsAdjustedFlex, AdjustedHrs, IsNonPunching, IsDailyFlex, IsCompress, OTStart, OTEnd, OTAdj, IsGraveyard, IsOTApply, BreakIn, BreakOut, IsFlexibreak, IsAddLate, AddLate, IsApplyToAll, IsSatUnder, IsAdjustedFlexUnder, AdjustedHrsUnder, IsWFH, WorkHrsLimit, IsArchived)
 
             For Each row As DataRow In dt.Rows
                 TransNo = Generic.ToInt(row("Retval"))

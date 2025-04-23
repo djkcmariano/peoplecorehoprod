@@ -68,7 +68,7 @@
                                     </dx:GridViewDataColumn>
                                     <dx:GridViewDataColumn Caption="History" CellStyle-HorizontalAlign="Center" Width="10">
                                         <DataItemTemplate>
-                                            <asp:LinkButton runat="server" ID="lnkHistory" OnClick="lnkHistory_Click" CssClass="fa fa-paperclip " CommandArgument='<%# Eval("DTRNo") & "|" & Eval("DTRCode")  %>' Font-Size="Medium" />
+                                            <asp:LinkButton runat="server" ID="lnkHistory" OnClick="lnkHistory_Click" CssClass="fa fa-history" CommandArgument='<%# Eval("DTRNo") & "|" & Eval("DTRCode")  %>' Font-Size="Medium" />
                                         </DataItemTemplate>
                                     </dx:GridViewDataColumn>
                                     <dx:GridViewDataTextColumn FieldName="DTRCode" Caption="DTR No." />

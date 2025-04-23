@@ -25,6 +25,18 @@ Partial Class Secured_EmpCityList
     Dim PayLocNo As Int64 = 0
 
     Protected Sub PopulateGrid()
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Try
             Dim dt As DataTable
             dt = SQLHelper.ExecuteDataTable("ECity_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
@@ -159,7 +171,7 @@ Partial Class Secured_EmpCityList
         Dim provinceNo As String = Me.cboProvinceNo.SelectedValue.ToString
         Dim postalCode As String = Me.txtPostalCode.Text
 
-        If SQLHelper.ExecuteNonQuery("ECity_WebSave", xPublicVar.xOnlineUseNo, Generic.ToInt(txtCityNo.Text), cityCode, cityDesc, provinceNo, postalCode, Generic.ToInt(cboPayLocNo.SelectedValue)) > 0 Then
+        If SQLHelper.ExecuteNonQuery("ECity_WebSave", xPublicVar.xOnlineUseNo, Generic.ToInt(txtCityNo.Text), cityCode, cityDesc, provinceNo, postalCode, PayLocNo, Generic.ToBol(txtIsArchived.Checked)) > 0 Then
             Retval = True
         Else
             Retval = False

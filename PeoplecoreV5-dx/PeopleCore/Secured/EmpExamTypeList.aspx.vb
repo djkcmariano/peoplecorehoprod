@@ -21,7 +21,7 @@ Partial Class Secured_EmpExamTypeList
             lnkDelete.Visible = False
             lnkArchive.Visible = True
         ElseIf tStatus = 1 Then
-            lnkDelete.Visible = True
+            lnkDelete.Visible = False
             lnkArchive.Visible = False
         Else
             lnkDelete.Visible = False

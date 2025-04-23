@@ -20,6 +20,18 @@ Partial Class Secured_EmpProvinceList
     Dim TransNo As Int64 = 0
     Dim PayLocNo As Int64 = 0
     Sub PopulateGrid()
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 0 Then
+            lnkDelete.Visible = False
+            lnkArchive.Visible = True
+        ElseIf tStatus = 1 Then
+            lnkDelete.Visible = False
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkArchive.Visible = False
+        End If
         Try
             Dim dt As DataTable
             dt = SQLHelper.ExecuteDataTable("EProvince_Web", UserNo, PayLocNo, Generic.ToInt(cboTabNo.SelectedValue))
@@ -222,7 +234,7 @@ Partial Class Secured_EmpProvinceList
     Private Function SaveRecord() As Integer
 
         If SQLHelper.ExecuteNonQuery("EProvince_WebSave",
-                                   xPublicVar.xOnlineUseNo, Generic.ToInt(Me.txtProvinceNo.Text), Me.txtProvinceCode.Text.ToString, Me.txtProvinceDesc.Text.ToString, Generic.CheckDBNull(Me.cboRegionNo.SelectedValue, clsBase.clsBaseLibrary.enumObjectType.IntType), Generic.ToInt(cboPayLocNo.SelectedValue)) > 0 Then
+                                   xPublicVar.xOnlineUseNo, Generic.ToInt(Me.txtProvinceNo.Text), Me.txtProvinceCode.Text.ToString, Me.txtProvinceDesc.Text.ToString, Generic.CheckDBNull(Me.cboRegionNo.SelectedValue, clsBase.clsBaseLibrary.enumObjectType.IntType), PayLocNo, Generic.ToInt(chkIsArchived.Checked)) > 0 Then
             SaveRecord = True
         Else
             SaveRecord = False

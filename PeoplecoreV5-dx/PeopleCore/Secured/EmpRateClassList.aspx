@@ -132,7 +132,7 @@
                 </div>
             </div>
             
-            <div class="form-group">
+            <div class="form-group" style="display:none">
                 <label class="col-md-4 control-label">Company :</label>
                 <div class="col-md-7">
                     <asp:Dropdownlist ID="cboPayLocNo" CssClass="form-control" runat="server" />

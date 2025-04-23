@@ -17,38 +17,39 @@ Partial Class Secured_EmpStatList
 
 
     Private Sub PopulateGrid(Optional IsMain As Boolean = False, Optional ByVal SortExp As String = "", Optional ByVal sordir As String = "")
+
         Try
 
 
-            _ds = sqlHelper.ExecuteDataset("EEmployeeStat_Web", Generic.CheckDBNull(Session("OnlineUserNo"), Global.clsBase.clsBaseLibrary.enumObjectType.IntType), Generic.CheckDBNull(Viewstate(xScript & "filter"), Global.clsBase.clsBaseLibrary.enumObjectType.StrType), Session("xPayLocNo"))
+            _ds = SQLHelper.ExecuteDataSet("EEmployeeStat_Web", Generic.CheckDBNull(Session("OnlineUserNo"), Global.clsBase.clsBaseLibrary.enumObjectType.IntType), Generic.CheckDBNull(ViewState(xScript & "filter"), Global.clsBase.clsBaseLibrary.enumObjectType.StrType), Session("xPayLocNo"))
             _dt = _ds.Tables(0)
             Dim dv As New Data.DataView(_dt)
             If SortExp <> "" Then
-                Viewstate(xScript & "SortExp") = SortExp
+                ViewState(xScript & "SortExp") = SortExp
             End If
             If sordir <> "" Then
 
-                Viewstate(xScript & "sortdir") = sordir
+                ViewState(xScript & "sortdir") = sordir
             End If
             If _ds.Tables.Count > 0 Then
                 If _ds.Tables(0).Rows.Count > 0 Then
                     dscount = _ds.Tables(0).Rows.Count
-                    If Viewstate(xScript & "SortExp") <> "" Then
-                        dv.Sort = Viewstate(xScript & "SortExp") + Viewstate(xScript & "sortdir")
+                    If ViewState(xScript & "SortExp") <> "" Then
+                        dv.Sort = ViewState(xScript & "SortExp") + ViewState(xScript & "sortdir")
                     End If
                 Else
-                    Viewstate(xScript & "no") = 0
+                    ViewState(xScript & "no") = 0
                 End If
             Else
-                Viewstate(xScript & "no") = 0
+                ViewState(xScript & "no") = 0
             End If
             If IsMain Then
-                Viewstate(xScript & "PageNo") = 0
+                ViewState(xScript & "PageNo") = 0
                 ViewState(Left(xScript, Len(xScript) - 5)) = 0
             End If
 
             Me.grdMain.SelectedIndex = Generic.CheckDBNull(ViewState(Left(xScript, Len(xScript) - 5)), Global.clsBase.clsBaseLibrary.enumObjectType.IntType)
-            Me.grdMain.PageIndex = Viewstate(xScript & "PageNo")
+            Me.grdMain.PageIndex = ViewState(xScript & "PageNo")
             Me.grdMain.DataSource = dv
             Me.grdMain.DataBind()
 

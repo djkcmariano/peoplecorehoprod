@@ -124,7 +124,7 @@ Partial Class Secured_EmpEducLevel
         Dim ds As New DataSet
         Dim RetVal As Integer = 0, xMessage As String = "", alertType As String = ""
 
-        ds = SQLHelper.ExecuteDataSet("ETableReferrence_WebValidate", UserNo, Session("xTableName"), Generic.ToInt(txtCode.Text), Code, Description, Generic.ToInt(cboPayLocNo.SelectedValue))
+        ds = SQLHelper.ExecuteDataSet("ETableReferrence_WebValidate", UserNo, Session("xTableName"), Generic.ToInt(txtCode.Text), Code, Description, PayLocNo)
         If ds.Tables.Count > 0 Then
             If ds.Tables(0).Rows.Count > 0 Then
                 RetVal = Generic.ToInt(ds.Tables(0).Rows(0)("RetVal"))
@@ -139,7 +139,7 @@ Partial Class Secured_EmpEducLevel
             Exit Sub
         End If
 
-        If SQLHelper.ExecuteNonQuery("EEducLevel_WebSave", UserNo, Generic.ToInt(txtCode.Text), Code, Description, Generic.ToInt(cboPayLocNo.SelectedValue), IsApplytoAll, IsArchived, txtEffectiveDate.Text, txtDocRef.Text, txtRemarks.Text, Generic.ToInt(txtOrderNo.Text), chkIsFreeText.Checked) > 0 Then
+        If SQLHelper.ExecuteNonQuery("EEducLevel_WebSave", UserNo, Generic.ToInt(txtCode.Text), Code, Description, PayLocNo, IsApplytoAll, IsArchived, txtEffectiveDate.Text, txtDocRef.Text, txtRemarks.Text, Generic.ToInt(txtOrderNo.Text), chkIsFreeText.Checked) > 0 Then
             PopulateGrid()
             MessageBox.Success(MessageTemplate.SuccessSave, Me)
         Else
