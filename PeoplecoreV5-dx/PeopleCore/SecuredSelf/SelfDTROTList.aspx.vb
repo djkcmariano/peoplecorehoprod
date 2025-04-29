@@ -16,6 +16,10 @@ Partial Class SecuredSelf_SelfDTROTList
     Dim OnlineEmpNo As Integer = 0
 
     Protected Sub PopulateGrid()
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus <> 1 Then
+            lnkDelete.Visible = False
+        End If
         Try
             Dim dt As DataTable
             dt = SQLHelper.ExecuteDataTable("EDTROT_WebSelf", UserNo, Generic.ToInt(cboTabNo.SelectedValue), PayLocNo)
