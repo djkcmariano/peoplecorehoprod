@@ -242,6 +242,7 @@ Partial Class Secured_PayIncomeTypeList
             Dim ChargeToIncomeTypeNo As Integer = Generic.ToInt(Me.cboChargeToIncomeTypeNo.SelectedValue)
             Dim ThresholdMonthly As Double = Generic.ToDec(txtThresholdMonthly.Text)
             Dim IsArchived As Integer = Generic.ToInt(chkIsArchived.Checked)
+            Dim IsExcludeContri As Boolean = Generic.ToBol(txtIsExcludeContri.Checked)
 
             Dim invalid As Boolean = True, messagedialog As String = "", alerttype As String = ""
             Dim dtx As New DataTable
@@ -259,7 +260,7 @@ Partial Class Secured_PayIncomeTypeList
                 Exit Sub
             End If
 
-            If SQLHelper.ExecuteNonQuery("EPayIncomeType_WebSave", UserNo, tno, PayIncomeTypeCode, PayIncomeTypeDesc, IsTaxable, IsAccum, IsTaxOneTime, IncoOrder, IsBasic, IsGrossInc, IsNonTaxable, IsAdjustment, IsPH, IsHDMF, IsSSS, IsSupplementary, IsDiminimis, IsFBT, IspaidByER, IsAddTakehomepay, EntityCode, PayLocNo, IschargeToAccum, IschargeToTaxable, Threshold, IsAllowance, isUnreg, PaySchedNo, ChargeToIncomeTypeNo, ThresholdMonthly, IsArchived) > 0 Then
+            If SQLHelper.ExecuteNonQuery("EPayIncomeType_WebSave", UserNo, tno, PayIncomeTypeCode, PayIncomeTypeDesc, IsTaxable, IsAccum, IsTaxOneTime, IncoOrder, IsBasic, IsGrossInc, IsNonTaxable, IsAdjustment, IsPH, IsHDMF, IsSSS, IsSupplementary, IsDiminimis, IsFBT, IspaidByER, IsAddTakehomepay, EntityCode, PayLocNo, IschargeToAccum, IschargeToTaxable, Threshold, IsAllowance, isUnreg, PaySchedNo, ChargeToIncomeTypeNo, ThresholdMonthly, IsArchived, IsExcludeContri) > 0 Then
                 Retval = True
             Else
                 Retval = False
