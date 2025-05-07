@@ -21,12 +21,14 @@ Partial Class SecuredSelf_SelfDTROBApplicationList
             Dim tstatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
 
             If tstatus = 2 Then
-                lnkCancel.Visible = True
+                lnkCancel.Visible = False
+                lnkDelete.Visible = False
                 grdDetl.Columns("Reason").Visible = True
                 grdDetl.Columns("Status").Visible = True
                 grdDetl.Columns("Select").Visible = True
             ElseIf tstatus = 0 Then
                 lnkCancel.Visible = False
+                lnkDelete.Visible = False
                 grdDetl.Columns("Reason").Visible = True
                 grdDetl.Columns("Status").Visible = True
                 grdDetl.Columns("Select").Visible = False

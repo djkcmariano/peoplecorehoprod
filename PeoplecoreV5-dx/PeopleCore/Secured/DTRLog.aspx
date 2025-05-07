@@ -79,7 +79,10 @@
                                 <dx:GridViewDataComboBoxColumn FieldName="RankDesc" Caption="Rank" Visible="false" />                                
                                 <dx:GridViewDataComboBoxColumn FieldName="SectionDesc" Caption="Section" Visible="false" />
                                 <dx:GridViewDataComboBoxColumn FieldName="UnitDesc" Caption="Unit" Visible="false" />
-                                <dx:GridViewDataComboBoxColumn FieldName="PositionDesc" Caption="Position" Visible="false" />   
+                                <dx:GridViewDataComboBoxColumn FieldName="PositionDesc" Caption="Position" Visible="false" />  
+                                <dx:GridViewDataComboBoxColumn FieldName="CancellationRemark" Caption="Cancellation Reason" Visible="false" />
+                                <dx:GridViewDataComboBoxColumn FieldName="CancelledBy" Caption="Cancelled By" Visible="false" />
+                                <dx:GridViewDataComboBoxColumn FieldName="CancelledDate" Caption="Cancelled Date" Visible="false" />
                                 <dx:GridViewCommandColumn ShowSelectCheckbox="True" Caption="Select" Width="2%">
 					                <HeaderTemplate>
                                         <dx:ASPxCheckBox ID="cbCheckAll" runat="server" OnInit="cbCheckAll_Init" >
@@ -135,7 +138,7 @@
                     <asp:HiddenField runat="server" ID="hifEmployeeNo"/>
                     <ajaxToolkit:AutoCompleteExtender ID="aceFullName" runat="server"  
                     TargetControlID="txtFullName" MinimumPrefixLength="2" 
-                    CompletionInterval="250" ServiceMethod="PopulateEmployee_Encoder" CompletionSetCount="1" 
+                    CompletionInterval="250" ServiceMethod="PopulateEmployee_DTRApplication" CompletionSetCount="1" 
                     CompletionListCssClass="autocomplete_completionListElement" 
                     CompletionListItemCssClass="autocomplete_listItem" 
                     CompletionListHighlightedItemCssClass="autocomplete_highlightedListItem"

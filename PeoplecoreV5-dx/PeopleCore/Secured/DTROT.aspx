@@ -73,6 +73,7 @@
                                 <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Applied By" Visible="false" />
                                 <dx:GridViewDataComboBoxColumn FieldName="CancellationRemark" Caption="Cancellation Reason" Visible="false" />
                                 <dx:GridViewDataComboBoxColumn FieldName="CancelledBy" Caption="Cancelled By" Visible="false" />
+                                <dx:GridViewDataComboBoxColumn FieldName="CancelledDate" Caption="Cancelled Date" Visible="false" />
                                 <dx:GridViewDataComboBoxColumn FieldName="CostCenterDesc" Caption="Cost Center" Visible="false" />
                                 <dx:GridViewDataComboBoxColumn FieldName="DepartmentDesc" Caption="Department" />
                                 <dx:GridViewDataComboBoxColumn FieldName="DivisionDesc" Caption="Division" Visible="false" />
@@ -141,7 +142,7 @@
                     <asp:HiddenField runat="server" ID="hifEmployeeNo"/>
                     <ajaxToolkit:AutoCompleteExtender ID="aceFullName" runat="server"  
                     TargetControlID="txtFullName" MinimumPrefixLength="2" 
-                    CompletionInterval="250" ServiceMethod="PopulateEmployee_Encoder" CompletionSetCount="1" 
+                    CompletionInterval="250" ServiceMethod="PopulateEmployee_DTRApplication" CompletionSetCount="1" 
                     CompletionListCssClass="autocomplete_completionListElement" 
                     CompletionListItemCssClass="autocomplete_listItem" 
                     CompletionListHighlightedItemCssClass="autocomplete_highlightedListItem"
