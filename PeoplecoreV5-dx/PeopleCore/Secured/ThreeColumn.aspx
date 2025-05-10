@@ -118,7 +118,7 @@
                     <asp:Textbox ID="txtRemarks" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="5" />
                 </div>
            </div>
-           <div class="form-group">
+           <div class="form-group" style="display:none">
                 <label class="col-md-4 control-label has-space">Company Name :</label>
                 <div class="col-md-7">
                     <asp:Dropdownlist ID="cboPayLocNo" runat="server" CssClass=" number form-control" />                    

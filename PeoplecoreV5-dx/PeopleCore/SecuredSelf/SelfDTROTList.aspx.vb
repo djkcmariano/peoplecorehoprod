@@ -16,6 +16,19 @@ Partial Class SecuredSelf_SelfDTROTList
     Dim OnlineEmpNo As Integer = 0
 
     Protected Sub PopulateGrid()
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+
+        If tStatus = 1 Then
+            lnkDelete.Visible = True
+            lnkCancel.Visible = False
+        ElseIf tStatus = 2 Then
+            lnkCancel.Visible = True
+            lnkDelete.Visible = False
+        Else
+            lnkDelete.Visible = False
+            lnkCancel.Visible = False
+        End If
+
         Try
             Dim dt As DataTable
             dt = SQLHelper.ExecuteDataTable("EDTROT_WebSelf", UserNo, Generic.ToInt(cboTabNo.SelectedValue), PayLocNo)
@@ -54,11 +67,7 @@ Partial Class SecuredSelf_SelfDTROTList
         End If
         PopulateGrid()
 
-        If Generic.ToInt(cboTabNo.SelectedValue) = 2 Then
-            lnkCancel.Visible = True
-        Else
-            lnkCancel.Visible = False
-        End If
+
 
         Generic.PopulateDXGridFilter(grdMain, UserNo, PayLocNo)
         Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1)) : Response.Cache.SetCacheability(HttpCacheability.NoCache) : Response.Cache.SetNoStore()

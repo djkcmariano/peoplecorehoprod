@@ -482,6 +482,26 @@ Partial Class SecuredSelf_SelfDTRLeaveApplicationList
                 Dim EmpNo As Integer = Generic.ToInt(grdDetl.GetRowValues(j, "EmployeeNo"))
                 Dim CPaid As Double = Generic.ToDec(grdDetl.GetRowValues(j, "PaidHrs"))
                 Dim Reason As String = Generic.ToStr(txtCancellationRemark.Text)
+
+
+
+                '//validate start here
+                Dim invalid As Boolean = True, messagedialog As String = "", alerttype As String = ""
+                Dim dtx As New DataTable
+                dtx = SQLHelper.ExecuteDataTable("ELeaveApplicationCancel_WebValidateSelf", UserNo, LeaveApplicationDetiNo, EmpNo)
+
+                For Each rowx As DataRow In dtx.Rows
+                    invalid = Generic.ToBol(rowx("Invalid"))
+                    messagedialog = Generic.ToStr(rowx("MessageDialog"))
+                    alerttype = Generic.ToStr(rowx("AlertType"))
+                Next
+
+                If invalid = True Then
+                    MessageBox.Alert(messagedialog, alerttype, Me)
+                    Exit Sub
+                End If
+
+
                 'If SQLHelper.ExecuteNonQuery("ELeaveApplicationCancel_WebSaveSelf", UserNo, LeaveApplicationDetiNo, EmpNo, CPaid, Reason) Then
                 '    i = i + 1
                 'End If

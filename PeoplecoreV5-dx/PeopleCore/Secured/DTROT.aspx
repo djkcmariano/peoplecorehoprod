@@ -27,9 +27,11 @@
                     <ul class="panel-controls">                                                        
                         <li><asp:LinkButton runat="server" ID="lnkAddMass" OnClick="lnkAddMass_Click" Text="Mass Application" CssClass="control-primary" /></li>
                         <li><asp:LinkButton runat="server" ID="lnkAdd" OnClick="lnkAdd_Click" Text="Add" CssClass="control-primary" /></li>
-                        <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" /></li>
+                        <li><asp:LinkButton runat="server" ID="lnkDelete" OnClick="lnkDelete_Click" Text="Delete" CssClass="control-primary" Visible ="false" /></li>
+                        <li><asp:LinkButton runat="server" ID="lnkCancel" OnClick="lnkCancel_Click" Text="Cancel" CssClass="control-primary"/></li>
                         <li><asp:LinkButton runat="server" ID="lnkExport" OnClick="lnkExport_Click" Text="Export" CssClass="control-primary" /></li>                                                                                
-                        <uc:ConfirmBox runat="server" ID="cfbDelete" TargetControlID="lnkDelete" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?"  />
+                        <uc:ConfirmBox runat="server" ID="cfbDelete" TargetControlID="lnkDelete" ConfirmMessage="Selected items will be permanently deleted and cannot be recovered. Proceed?"  />                                                                                
+                        <uc:ConfirmBox runat="server" ID="cfbCancel" TargetControlID="lnkCancel" ConfirmMessage="Selected items will be cancelled. Proceed?"  />
                     </ul>
                     </ContentTemplate>
                     <Triggers>
@@ -71,6 +73,7 @@
                                 <dx:GridViewDataTextColumn FieldName="EncodeBy" Caption="Applied By" Visible="false" />
                                 <dx:GridViewDataComboBoxColumn FieldName="CancellationRemark" Caption="Cancellation Reason" Visible="false" />
                                 <dx:GridViewDataComboBoxColumn FieldName="CancelledBy" Caption="Cancelled By" Visible="false" />
+                                <dx:GridViewDataComboBoxColumn FieldName="CancelledDate" Caption="Cancelled Date" Visible="false" />
                                 <dx:GridViewDataComboBoxColumn FieldName="CostCenterDesc" Caption="Cost Center" Visible="false" />
                                 <dx:GridViewDataComboBoxColumn FieldName="DepartmentDesc" Caption="Department" />
                                 <dx:GridViewDataComboBoxColumn FieldName="DivisionDesc" Caption="Division" Visible="false" />
@@ -139,7 +142,7 @@
                     <asp:HiddenField runat="server" ID="hifEmployeeNo"/>
                     <ajaxToolkit:AutoCompleteExtender ID="aceFullName" runat="server"  
                     TargetControlID="txtFullName" MinimumPrefixLength="2" 
-                    CompletionInterval="250" ServiceMethod="PopulateEmployee_Encoder" CompletionSetCount="1" 
+                    CompletionInterval="250" ServiceMethod="PopulateEmployee_DTRApplication" CompletionSetCount="1" 
                     CompletionListCssClass="autocomplete_completionListElement" 
                     CompletionListItemCssClass="autocomplete_listItem" 
                     CompletionListHighlightedItemCssClass="autocomplete_highlightedListItem"

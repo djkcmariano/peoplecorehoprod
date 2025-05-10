@@ -109,7 +109,7 @@
                     <ul class="panel-controls">
                     &nbsp;                                                       
                         <li>
-                            <asp:LinkButton runat="server" ID="lnkCancel" OnClick="lnkCancel_Click" Text="Cancel" CssClass="control-primary" />
+                            <asp:LinkButton runat="server" ID="lnkCancel" OnClick="lnkCancel_Click" Text="Cancel" CssClass="control-primary"  Visible="false" />
                         </li>
                     </ul>
                 </div>

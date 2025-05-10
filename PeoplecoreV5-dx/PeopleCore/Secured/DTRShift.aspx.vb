@@ -13,6 +13,12 @@ Partial Class Secured_DTRShiftList
     Dim PayLocNo As Integer = 0
 
     Protected Sub PopulateGrid()
+        Dim tStatus As Integer = Generic.ToInt(cboTabNo.SelectedValue)
+        If tStatus = 1 Or tStatus = 2 Then
+            lnkCancel.Visible = True
+        Else
+            lnkCancel.Visible = False
+        End If
         Try
             Dim dt As DataTable
             dt = SQLHelper.ExecuteDataTable("EDTRShift_Web", UserNo, Generic.ToInt(cboTabNo.SelectedValue), PayLocNo, FilterSearch1.SearchText, FilterSearch1.SelectTop.ToString, FilterSearch1.FilterParam.ToString)
@@ -52,7 +58,7 @@ Partial Class Secured_DTRShiftList
     Private Sub PopulateDropDown()
         Generic.PopulateDropDownList(UserNo, Me, "pnlPopupDetl", Generic.ToInt(Session("xPayLocNo")))
         Try
-            cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", UserNo, 12)
+            cboTabNo.DataSource = SQLHelper.ExecuteDataSet("ETab_WebLookup", UserNo, 52)
             cboTabNo.DataTextField = "tDesc"
             cboTabNo.DataValueField = "tno"
             cboTabNo.DataBind()
@@ -122,6 +128,31 @@ Partial Class Secured_DTRShiftList
         Else
             MessageBox.Warning(MessageTemplate.DeniedEdit, Me)
         End If
+    End Sub
+    Protected Sub lnkCancel_Click(sender As Object, e As EventArgs)
+
+        Dim dt As DataTable, tProceed As Boolean = False
+        Dim str As String = "", i As Integer = 0
+        For j As Integer = 0 To grdMain.VisibleRowCount - 1
+            If grdMain.Selection.IsRowSelected(j) Then
+                Dim item As Integer = Generic.ToInt(grdMain.GetRowValues(j, "DTRShiftNo"))
+                dt = SQLHelper.ExecuteDataTable("ETableApplication_WebCancel", UserNo, "EDTRShift", item, PayLocNo)
+                For Each row As DataRow In dt.Rows
+                    tProceed = Generic.ToBol(row("tProceed"))
+                Next
+                grdMain.Selection.UnselectRow(j)
+                i = i + 1
+            End If
+        Next
+
+        If i > 0 Then
+            MessageBox.Success("(" + i.ToString + ") transaction(s) successfully cancelled.", Me)
+            PopulateGrid()
+        Else
+            MessageBox.Information(MessageTemplate.NoSelectedTransaction, Me)
+        End If
+
+
     End Sub
 
     Protected Sub lnkDelete_Click(sender As Object, e As EventArgs)
