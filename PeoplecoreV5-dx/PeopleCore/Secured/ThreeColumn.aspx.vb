@@ -126,7 +126,7 @@ Partial Class Secured_ThreeColumn
         Dim ds As New DataSet
         Dim RetVal As Integer = 0, xMessage As String = "", alertType As String = ""
 
-        ds = SQLHelper.ExecuteDataSet("ETableReferrence_WebValidate", UserNo, Session("xTableName"), Generic.ToInt(txtCode.Text), Code, Description, Generic.ToInt(cboPayLocNo.SelectedValue))
+        ds = SQLHelper.ExecuteDataSet("ETableReferrence_WebValidate", UserNo, Session("xTableName"), Generic.ToInt(txtCode.Text), Code, Description, PayLocNo)
         If ds.Tables.Count > 0 Then
             If ds.Tables(0).Rows.Count > 0 Then
                 RetVal = Generic.ToInt(ds.Tables(0).Rows(0)("RetVal"))
@@ -141,7 +141,7 @@ Partial Class Secured_ThreeColumn
             Exit Sub
         End If
 
-        obj = Generic.ToInt(SQLHelper.ExecuteScalar("ETableThreeColumn_WebSave", UserNo, TableName, Generic.ToInt(txtCode.Text), Code, Description, Generic.ToInt(cboPayLocNo.SelectedValue), IsApplytoAll, IsArchived, txtEffectiveDate.Text, txtDocRef.Text, txtRemarks.Text))
+        obj = Generic.ToInt(SQLHelper.ExecuteScalar("ETableThreeColumn_WebSave", UserNo, TableName, Generic.ToInt(txtCode.Text), Code, Description, PayLocNo, IsApplytoAll, IsArchived, txtEffectiveDate.Text, txtDocRef.Text, txtRemarks.Text))
 
         If obj = 0 Then
             PopulateGrid()

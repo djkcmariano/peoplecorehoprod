@@ -69,7 +69,7 @@ Public Class WebService
     End Function
 
 
-    <WebMethod(True)> _
+    <WebMethod(True)>
     Public Function PopulateManagerAll(prefixText As String, count As Integer) As List(Of String)
         Dim items As New List(Of String)()
         Dim ds As New DataSet()
@@ -79,6 +79,24 @@ Public Class WebService
         payLocno = (HttpContext.Current.Session("xPayLocNo"))
 
         ds = SQLHelper.ExecuteDataSet("EEmployee_WebLookup_AC_Manager_All", UserNo, prefixText, payLocno, count)
+        For Each row As DataRow In ds.Tables(0).Rows
+            Dim item As String = AjaxControlToolkit.AutoCompleteExtender.CreateAutoCompleteItem((row("tDesc")), (row("tNo")))
+            items.Add(item)
+        Next
+        ds.Dispose()
+        Return items
+    End Function
+
+    <WebMethod(True)>
+    Public Function PopulateEmployee_DTRApplication(prefixText As String, count As Integer) As List(Of String)
+        Dim items As New List(Of String)()
+        Dim ds As New DataSet()
+
+        Dim UserNo As Integer = 0, payLocno As Integer = 0
+        UserNo = (HttpContext.Current.Session("onlineuserno"))
+        payLocno = (HttpContext.Current.Session("xPayLocNo"))
+
+        ds = SQLHelper.ExecuteDataSet("EEmployee_WebLookup_DTR_Application", UserNo, prefixText, payLocno, count)
         For Each row As DataRow In ds.Tables(0).Rows
             Dim item As String = AjaxControlToolkit.AutoCompleteExtender.CreateAutoCompleteItem((row("tDesc")), (row("tNo")))
             items.Add(item)
